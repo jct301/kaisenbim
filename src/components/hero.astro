@@ -1,0 +1,27 @@
+---
+import SocialLink from "@/components/social-link.astro";
+import WhatsappIcon from "@/icons/whatsapp-icon.astro";
+import MailIcon from "@/icons/mail-icon.astro";
+---
+
+<section
+  class="flex items-center justify-center h-screen bg-no-repeat bg-fixed bg-center bg-cover flex-col gap-y-20"
+  style="background-image: url('/images/image-0009.webp');"
+>
+  {/* overlay */}
+  <div class="absolute top-0 left-0 right-0 bottom-0 bg-black/70 z-10"></div>
+
+  <div class="z-10 p-5 flex justify-center items-center flex-col gap-y-2">
+    <h2 class="font-semibold text-6xl uppercase">Kaisen BIM</h2>
+    <p class="text-xl">Contribuyendo al futuro de la ingeniería.</p>
+  </div>
+
+  <div class="flex gap-4 justify-center items-center">
+    <SocialLink link="https://wa.me/59477056643">
+      <WhatsappIcon className="z-20" />
+    </SocialLink>
+    <SocialLink link="">
+      <MailIcon className="z-20" />
+    </SocialLink>
+  </div>
+</section>

@@ -1,0 +1,32 @@
+---
+import Header from "@/components/header.astro";
+import MenuMobile from "@/components/menu-mobile.astro";
+import Up from "@/components/up.astro";
+---
+
+<!doctype html>
+<html lang="en" class="min-h-screen">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+    <title>KAISEN BIM</title>
+  </head>
+  <body class="bg-black text-white">
+    <Header />
+    <Up />
+    <main class="w-full">
+      <slot />
+    </main>
+    <MenuMobile />
+  </body>
+</html>
+<style is:global>
+  :root {
+    color-scheme: dark;
+  }
+
+  html {
+    scroll-behavior: smoth;
+  }
+</style>

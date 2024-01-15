@@ -1,0 +1,17 @@
+---
+import SearchIcon from "./icons/search-icon.astro";
+import MenuDesktop from "./menu-desktop.astro";
+import Search from "./search.astro";
+import Logo from "./logo.astro";
+---
+
+<header
+  class="fixed top-0 w-full px-6 py-4 z-50 flex justify-between items-center backdrop-blur gap-x-10 border-b border-b-gray-500"
+>
+  <nav class="flex justify-center gap-x-8 items-center">
+    <a href="/" class="flex flex-col gap-2 justify-center items-center">
+      <Logo />
+    </a>
+    <MenuDesktop />
+  </nav>
+</header>

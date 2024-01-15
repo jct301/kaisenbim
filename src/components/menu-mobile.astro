@@ -1,0 +1,35 @@
+---
+import { LINKS } from "src/constants";
+---
+
+<header
+  class={`
+    flex md:hidden justify-center items-center
+    mx-auto
+    py-5
+    fixed bottom-0
+    w-full
+    z-20
+  `}
+>
+  <nav
+    class={`
+      border border-black rounded-full
+      px-4 py-2
+      flex flex-row items-center
+      bg-black/90
+      backdrop-blur-2xl
+    `}
+  >
+    {
+      LINKS.map(({ path, name }) => (
+        <a
+          class="hover:text-kaisen hover:underline px-4 transition"
+          href={path}
+        >
+          {name}
+        </a>
+      ))
+    }
+  </nav>
+</header>
