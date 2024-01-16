@@ -1,0 +1,122 @@
+#+title: Sitio web de Kaisen BIM
+#+description: Documentación del sitio web de Kaisen BIM.
+#+author: jctr301@gmail.com
+
+* Tabla de contenidos: :toc:
+- [[#sobre-nosotros][SOBRE NOSOTROS]]
+- [[#estructura-del-proyecto][ESTRUCTURA DEL PROYECTO]]
+
+* SOBRE NOSOTROS
+Sitio web de Kaisen BIM ( Servicios de modelado BIM ), donde se brinda informadoción sobre los servicios, cartera de proyectos y contactos.
+
+* ESTRUCTURA DEL PROYECTO
+
+#+begin_src sh
+└── 📁kaisen-bim-web
+    └── 📁.astro
+        └── types.d.ts
+    └── .eslintignore
+    └── .eslintrc.js
+    └── .gitignore
+    └── .npmrc
+    └── .prettierignore
+    └── .prettierrc.js
+    └── 📁.vscode
+        └── extensions.json
+        └── launch.json
+        └── settings.json
+    └── LICENSE
+    └── README.org
+    └── astro.config.ts
+    └── bun.lockb
+    └── package.json
+    └── postcss.config.js
+    └── 📁public
+        └── 📁images
+            └── image-0001.webp
+            └── image-0002.webp
+            └── image-0003.webp
+            └── image-0004.webp
+            └── image-0005.webp
+            └── image-0006.webp
+            └── image-0007.webp
+            └── image-0008.webp
+            └── image-0009.webp
+            └── image-0010.webp
+            └── image-0011.webp
+            └── image-0012.webp
+            └── image-0013.webp
+            └── 📁services
+                └── image-0001.webp
+                └── image-0002.webp
+                └── image-0003.webp
+                └── image-0004.webp
+                └── image-0005.webp
+                └── image-0006.webp
+                └── image-0007.webp
+        └── logo.png
+        └── logo.svg
+    └── 📁src
+        └── 📁assets
+            └── roboto-mono-700.ttf
+            └── roboto-mono-regular.ttf
+        └── 📁components
+            └── footer.astro
+            └── head.astro
+            └── header.astro
+            └── hero.astro
+            └── 📁icons
+                └── arrow-dow-icon.astro
+                └── chevrons-down.astro
+                └── facebook-icon.astro
+                └── instagram-icon.astro
+                └── linkedin-icon.astro
+                └── mail-icon.astro
+                └── search-icon.astro
+                └── whatsapp-icon.astro
+            └── logo.astro
+            └── menu-desktop.astro
+            └── paginator.astro
+            └── 📁project
+                └── hero.astro
+                └── project-list.astro
+                └── project-preview.astro
+                └── toc-heading.astro
+                └── toc.astro
+            └── section-container.astro
+            └── 📁service
+                └── service-list.astro
+                └── service-preview.astro
+            └── social-link.astro
+            └── theme-toggle.tsx
+            └── up.tsx
+        └── constants.ts
+        └── 📁content
+            └── config.ts
+            └── 📁project
+                └── 1-project copy 2.mdx
+                └── 1-project copy 3.mdx
+                └── 1-project copy 4.mdx
+                └── 1-project copy 5.mdx
+                └── 1-project copy.mdx
+                └── 1-project.mdx
+        └── env.d.ts
+        └── 📁layouts
+            └── project.astro
+            └── root.astro
+        └── 📁pages
+            └── index.astro
+            └── 📁projects
+                └── [...page].astro
+                └── [slug].astro
+            └── rss.xml.ts
+        └── types.d.ts
+        └── 📁utils
+            └── date.ts
+            └── generate-toc.ts
+            └── project.ts
+            └── remark-reading-time.ts
+    └── svelte.config.js
+    └── tailwind.config.mjs
+    └── tsconfig.json
+#+end_src
