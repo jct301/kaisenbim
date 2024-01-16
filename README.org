@@ -3,13 +3,13 @@
 #+author: jctr301@gmail.com
 
 * Tabla de contenidos: :toc:
-- [[#sobre-nosotros][SOBRE NOSOTROS]]
-- [[#estructura-del-proyecto][ESTRUCTURA DEL PROYECTO]]
+- [[#sobre-nosotros][Sobre nosotros]]
+- [[#estructura-del-proyecto][Estructura de proyecto]]
 
-* SOBRE NOSOTROS
+* Sobre nosotros
 Sitio web de Kaisen BIM ( Servicios de modelado BIM ), donde se brinda informadoción sobre los servicios, cartera de proyectos y contactos.
 
-* ESTRUCTURA DEL PROYECTO
+* Estructura de proyecto
 
 #+begin_src sh
 └── 📁kaisen-bim-web
