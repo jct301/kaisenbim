@@ -1,0 +1,28 @@
+---
+import type { CollectionEntry } from "astro:content";
+import { Image, Picture } from "astro:assets";
+
+type Props= {
+	project: CollectionEntry<"project">;
+	withDesc?: boolean;
+};
+
+const { project } = Astro.props;
+const {data,slug} = project
+const {
+	coverImage,description,title } = data
+---
+
+	<a href={`/projects/${slug}/`} class="bg-gray-900" data-astro-prefetch>
+		<div>
+			<Image
+			class={''}
+			src={coverImage.src}
+			alt={coverImage.alt}
+			/>
+		</div>
+		<div>
+			<h4>{title}</h4>
+			<p>{description}</p>
+		</div>
+	</a>

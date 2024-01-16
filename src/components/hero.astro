@@ -1,7 +1,7 @@
 ---
-import SocialLink from "@/components/social-link.astro";
-import WhatsappIcon from "@/icons/whatsapp-icon.astro";
-import MailIcon from "@/icons/mail-icon.astro";
+import SocialLink from "./social-link.astro";
+import WhatsappIcon from "./icons/whatsapp-icon.astro";
+import MailIcon from "./icons/mail-icon.astro";
 ---
 
 <section
@@ -19,9 +19,11 @@ import MailIcon from "@/icons/mail-icon.astro";
   <div class="flex gap-4 justify-center items-center">
     <SocialLink link="https://wa.me/59477056643">
       <WhatsappIcon className="z-20" />
+      <span>+59177056643</span>
     </SocialLink>
     <SocialLink link="">
       <MailIcon className="z-20" />
+      <span>kaisenbim@gmail.com</span>
     </SocialLink>
   </div>
 </section>

@@ -3,11 +3,6 @@
   "compilerOptions": {
     "jsx": "react-jsx",
     "jsxImportSource": "preact",
-    "baseUrl": ".",
-    "paths": {
-      "@/layouts/*":["src/layouts/*"],
-      "@/components/*":["src/components/*"],
-      "@/icons/*":["src/components/icons/*"]
-    }
-  }
+   
+  },
 }

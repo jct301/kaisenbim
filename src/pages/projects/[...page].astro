@@ -1,0 +1,58 @@
+---
+import type { Page, GetStaticPaths } from "astro";
+import type { CollectionEntry } from "astro:content";
+import PageLayout from "../../layouts/root.astro";
+import ProjectPreview from "../../components/project/project-preview.astro";
+import Pagination from "../../components/paginator.astro";
+import { getAllProjects } from "../../utils/project";
+
+export const getStaticPaths = (async ({ paginate }) => {
+	const allProjects = await getAllProjects();
+	return paginate(allProjects, { props: {}, pageSize: 10 });
+}) satisfies GetStaticPaths;
+
+interface Props {
+	page: Page<CollectionEntry<"project">>;
+	uniqueTags: string[];
+}
+
+const { page } = Astro.props;
+
+const meta = {
+	title: "Posts",
+	description: "Ready my collection of posts and the things that interest me",
+};
+
+const paginationProps = {
+	...(page.url.prev && {
+		prevUrl: {
+			url: page.url.prev,
+			text: `← Previous Posts`,
+		},
+	}),
+	...(page.url.next && {
+		nextUrl: {
+			url: page.url.next,
+			text: `Next Posts →`,
+		},
+	}),
+};
+---
+
+<PageLayout meta={meta}>
+	<h1 class="title mb-6">Posts</h1>
+	<div class="grid gap-y-16 sm:grid-cols-[3fr_1fr] sm:gap-x-8">
+		<section aria-label="Blog post list">
+			<ul class="space-y-8 text-start">
+				{
+					page.data.map((p) => (
+						<li class="flex flex-col flex-wrap gap-2 sm:flex-row [&_q]:basis-full">
+							<ProjectPreview project={p} withDesc />
+						</li>
+					))
+				}
+			</ul>
+			<Pagination {...paginationProps} />
+		</section>
+	</div>
+</PageLayout>

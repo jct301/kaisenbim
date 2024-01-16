@@ -1,8 +1,7 @@
 ---
-import SearchIcon from "./icons/search-icon.astro";
 import MenuDesktop from "./menu-desktop.astro";
-import Search from "./search.astro";
 import Logo from "./logo.astro";
+import {ThemeToggle} from "./theme-toggle";
 ---
 
 <header
@@ -13,5 +12,6 @@ import Logo from "./logo.astro";
       <Logo />
     </a>
     <MenuDesktop />
+    <ThemeToggle client:load/>
   </nav>
 </header>
