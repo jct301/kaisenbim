@@ -1,0 +1,31 @@
+---
+import { Image } from "astro:assets";
+
+interface Props {
+	thumbnail: {
+		alt: string;
+		src: string;
+		width: number;
+		height: number;
+	};
+	title: string;
+}
+
+const { thumbnail, title } = Astro.props;
+---
+
+<div class="aspect-h-9 aspect-w-16 mb-6">
+	<Image
+		width={thumbnail.width}
+		height={thumbnail.height}
+		src={thumbnail.src}
+		alt={thumbnail.alt}
+		class="object-cover"
+		loading="eager"
+		fetchpriority="high"
+	/>
+
+	<h1 class="title mb-3 sm:mb-1">
+		{title}
+	</h1>
+</div>

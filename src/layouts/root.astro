@@ -1,18 +1,19 @@
 ---
-import Header from "../components/header.astro";
-import { ViewTransitions } from "astro:transitions";
-import { Up } from "../components/up";
-import Footer from "../components/footer.astro";
-import Head from "../components/head.astro";
-import { siteConfig } from "../constants";
-import type { SiteMeta } from "../types";
+import { Up } from "@/components/up";
+import { SITE_CONFIG } from "@/constants";
+import type { SiteMeta } from "@/types";
 import "@fontsource-variable/onest";
+import { ViewTransitions } from "astro:transitions";
+import Footer from "../components/layouts/footer.astro";
+import Head from "../components/layouts/head.astro";
+import Header from "../components/layouts/header.astro";
+
 interface Props {
 	meta: SiteMeta;
 }
 
 const {
-	meta: { title, description = siteConfig.description, ogImage, articleDate },
+	meta: { title, description = SITE_CONFIG.description, ogImage, articleDate },
 } = Astro.props;
 ---
 
@@ -32,23 +33,6 @@ const {
 		<style is:global>
 			:root {
 				color-scheme: dark;
-			}
-
-			::-webkit-scrollbar {
-				width: 8px;
-			}
-			::-webkit-scrollbar-track {
-				background: transparent;
-				backdrop-filter: blur(10px);
-				border-radius: 5px;
-			}
-			::-webkit-scrollbar-thumb {
-				background: rgba(255, 255, 255, 0.3);
-				backdrop-filter: blur(10px);
-				border-radius: 5px;
-			}
-			::-webkit-scrollbar-thumb:hover {
-				background: rgba(255, 255, 255, 0.5);
 			}
 
 			html,

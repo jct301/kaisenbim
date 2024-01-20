@@ -1,14 +1,14 @@
-import { siteConfig } from "../constants";
+import { SITE_CONFIG } from "../constants";
 
-const dateFormat = new Intl.DateTimeFormat(siteConfig.date.locale, siteConfig.date.options);
+const dateFormat = new Intl.DateTimeFormat(SITE_CONFIG.date.locale, SITE_CONFIG.date.options);
 
 export function getFormattedDate(
 	date: string | number | Date,
 	options?: Intl.DateTimeFormatOptions,
 ) {
 	if (typeof options !== "undefined") {
-		return new Date(date).toLocaleDateString(siteConfig.date.locale, {
-			...(siteConfig.date.options as Intl.DateTimeFormatOptions),
+		return new Date(date).toLocaleDateString(SITE_CONFIG.date.locale, {
+			...(SITE_CONFIG.date.options as Intl.DateTimeFormatOptions),
 			...options,
 		});
 	}

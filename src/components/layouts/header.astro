@@ -1,0 +1,15 @@
+---
+import Menu from "@/components/menu.astro";
+import Logo from "../logo.astro";
+---
+
+<header
+	class="fixed top-0 z-50 flex w-full items-center justify-between gap-x-10 border-b border-b-gray-500 px-6 py-4 backdrop-blur"
+>
+	<nav class="flex items-center justify-center gap-x-8">
+		<a href="/" class="flex flex-col items-center justify-center gap-2">
+			<Logo />
+		</a>
+		<Menu />
+	</nav>
+</header>

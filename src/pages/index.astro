@@ -1,12 +1,10 @@
 ---
-import Hero from "../components/hero.astro";
-import ProjectList from "../components/project/project-list.astro";
-import ServiceList from "../components/service/service-list.astro";
-import Layout from "../layouts/root.astro";
+import Hero from "@/components/layouts/hero.astro";
+import ServiceList from "@/components/services/list.astro";
+import Layout from "@/layouts/root.astro";
 ---
 
 <Layout meta={{ title: "Kaisen BIM" }}>
 	<Hero />
 	<ServiceList />
-	<ProjectList maxProjects={10} />
 </Layout>

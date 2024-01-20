@@ -1,0 +1,13 @@
+---
+import { LINKS } from "../constants";
+---
+
+<ul class="hidden items-center justify-between gap-x-4 md:flex">
+	{
+		LINKS.map(({ name, path }) => (
+			<a class="hover:text-green-600 hover:underline" href={path}>
+				{name}
+			</a>
+		))
+	}
+</ul>

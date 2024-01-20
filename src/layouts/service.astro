@@ -5,11 +5,11 @@ import Hero from "@/components/hero-content.astro";
 import Toc from "@/components/toc.astro";
 import BaseLayout from "@/layouts/root.astro";
 interface Props {
-	project: CollectionEntry<"project">;
+	service: CollectionEntry<"service">;
 }
 
-const { project } = Astro.props;
-const { data } = project;
+const { service } = Astro.props;
+const { data } = service;
 const { thumbnail, title } = data;
 const { src, alt } = thumbnail;
 
@@ -20,10 +20,10 @@ const image = {
 	width: src.width,
 };
 
-const { headings } = await project.render();
+const { headings } = await service.render();
 ---
 
-<BaseLayout meta={{ title: project.data.title, description: project.data.description }}>
+<BaseLayout meta={{ title: service.data.title, description: service.data.description }}>
 	<div class="gap-x-10 lg:flex lg:items-start">
 		{!!headings.length && <Toc headings={headings} />}
 		<article class="flex-grow" data-pagefind-body>

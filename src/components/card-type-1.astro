@@ -1,0 +1,23 @@
+---
+import { Image } from "astro:assets";
+import { type Data } from "@/types";
+
+type Props = Data;
+
+const { thumbnail, path, title, description } = Astro.props;
+---
+
+<a href={path} class="bg-gray-900" data-astro-prefetch>
+	<div>
+		<Image
+			src={thumbnail.src}
+			alt={thumbnail.alt}
+			height={thumbnail.src.height}
+			width={thumbnail.src.width}
+		/>
+	</div>
+	<div>
+		<h4>{title}</h4>
+		<p>{description}</p>
+	</div>
+</a>

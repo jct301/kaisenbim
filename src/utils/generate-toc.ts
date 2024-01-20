@@ -4,6 +4,12 @@ export interface TocItem extends MarkdownHeading {
 	subheadings: Array<TocItem>;
 }
 
+/**
+ *
+ * @param item
+ * @param depth
+ * @returns
+ */
 function diveChildren(item: TocItem, depth: number): Array<TocItem> {
 	if (depth === 1 || !item.subheadings.length) {
 		return item.subheadings;
@@ -13,6 +19,11 @@ function diveChildren(item: TocItem, depth: number): Array<TocItem> {
 	}
 }
 
+/**
+ *
+ * @param headings
+ * @returns
+ */
 export function generateToc(headings: ReadonlyArray<MarkdownHeading>) {
 	// this ignores/filters out h1 element(s)
 	const bodyHeadings = [...headings.filter(({ depth }) => depth > 1)];
