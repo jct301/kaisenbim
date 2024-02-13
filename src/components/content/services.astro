@@ -1,0 +1,34 @@
+---
+import { getContent } from '@/services/content'
+import SectionContainer from '@/components/section-container.astro'
+import Item from '@/components/item.astro'
+import Grid from '@/components/grid.astro'
+const services = await getContent({ type: 'service' })
+---
+
+<SectionContainer>
+  <Grid>
+    {
+      services?.map(
+        ({
+          data: {
+            description,
+            thumbnail: { src, alt },
+            title,
+          },
+          slug,
+        }) => (
+          <Item
+            description={description}
+            path={slug}
+            thumbnail={{
+              alt,
+              src,
+            }}
+            title={title}
+          />
+        ),
+      )
+    }
+  </Grid>
+</SectionContainer>

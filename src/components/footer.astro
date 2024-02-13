@@ -16,12 +16,12 @@ const year = new Date().getFullYear();
 		class="flex gap-x-2 sm:gap-x-0 sm:divide-x sm:divide-gray-500"
 	>
 		{
-			LINKS.map((link) => (
+			LINKS.map(({path,name}) => (
 				<a
-					href={link.path}
+					href={path}
 					class="sm:hover:text-textColor px-4 py-2 sm:px-2 sm:py-0 sm:hover:underline"
 				>
-					{link.name}
+					{name}
 				</a>
 			))
 		}
