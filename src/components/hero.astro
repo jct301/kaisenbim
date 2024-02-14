@@ -1,28 +1,33 @@
 ---
 import SocialLink from '@/components/link.astro'
-import WhatsappIcon from '@/components/icons/whatsapp-icon.astro'
 import MailIcon from '@/components/icons/mail-icon.astro'
+import { Image } from 'astro:assets'
+import SectionContainer from './section-container.astro'
 ---
 
-<section
-  class='flex h-screen flex-col items-center justify-center gap-y-20 bg-cover bg-fixed bg-center bg-no-repeat'
-  style="background-image: url('/images/image-0009.webp');">
-  {/* overlay */}
-  <div class='absolute bottom-0 left-0 right-0 top-0 z-10 bg-black/70'></div>
-
-  <div class='z-10 flex flex-col items-center justify-center gap-y-2 p-5'>
-    <h2 class='text-6xl font-semibold uppercase'>Kaisen BIM</h2>
-    <p class='text-xl'>Contribuyendo al futuro de la ingeniería.</p>
+<SectionContainer>
+  <div
+    class='w-full flex flex-col lg:flex-row gap-12 justify-center items-center mt-6'>
+    <div class='flex flex-col gap-y-8 w-full'>
+      <div class='w-full flex flex-col gap-y-2'>
+        <h1 class='text-6xl font-bold text-blue-800 dark:text-blue-600'>
+          KaisenBIM
+        </h1>
+        <p class='text-lg'>Contribuyendo al futuro de la ingeniería.</p>
+      </div>
+      <div class='flex gap-x-2'>
+        <SocialLink link=''>
+          <MailIcon className='' />
+          <span>Contactanos</span>
+        </SocialLink>
+      </div>
+    </div>
+    <Image
+      src={'/hero.webp'}
+      alt={'Background imagen hero'}
+      width={960}
+      height={430}
+      class='rounded-sm shadow-lg brightness-50 w-md h-auto'
+    />
   </div>
-
-  <div class='flex items-center justify-center gap-4'>
-    <SocialLink link='https://wa.me/59477056643'>
-      <WhatsappIcon className='z-20' />
-      <span>+59177056643</span>
-    </SocialLink>
-    <SocialLink link=''>
-      <MailIcon className='z-20' />
-      <span>kaisenbim@gmail.com</span>
-    </SocialLink>
-  </div>
-</section>
+</SectionContainer>

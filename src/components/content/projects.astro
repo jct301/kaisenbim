@@ -1,0 +1,41 @@
+---
+import { getContent } from '@/services/content'
+import SectionContainer from '@/components/section-container.astro'
+import Item from '@/components/item.astro'
+import Grid from '@/components/grid.astro'
+const projects = await getContent({ type: 'project' })
+import BriefcaseIcon from '@/components/icons/briefcase-icon.astro'
+---
+
+<SectionContainer id='projects'>
+  <div class='flex flex-col gap-y-6'>
+    <div class='flex gap-x-2 items-center font-semibold'>
+      <BriefcaseIcon />
+      <h3 class='text-3xl'>Proyectos</h3>
+    </div>
+    <Grid>
+      {
+        projects?.map(
+          ({
+            data: {
+              description,
+              thumbnail: { src, alt },
+              title,
+            },
+            slug,
+          }) => (
+            <Item
+              description={description}
+              path={slug}
+              thumbnail={{
+                alt,
+                src,
+              }}
+              title={title}
+            />
+          ),
+        )
+      }
+    </Grid>
+  </div>
+</SectionContainer>

@@ -1,23 +1,24 @@
 ---
-import { Image } from "astro:assets";
-import { type Content } from "@/types";
+import { Image } from 'astro:assets'
+import { type Content } from '@/types'
 
-type Props = Content;
+type Props = Content
 
-const { thumbnail, path, title, description } = Astro.props;
+const { thumbnail, path, title, description } = Astro.props
 ---
 
-<a href={path} class="bg-gray-900" data-astro-prefetch>
-	<div>
-		<Image
-			src={thumbnail.src}
-			alt={thumbnail.alt}
-			height={thumbnail.src.height}
-			width={thumbnail.src.width}
-		/>
-	</div>
-	<div>
-		<h4>{title}</h4>
-		<p>{description}</p>
-	</div>
+<a href={path} class='bg-gray-900' data-astro-prefetch>
+  <div>
+    <Image
+      src={thumbnail.src}
+      alt={thumbnail.alt}
+      height={thumbnail.src.height}
+      width={thumbnail.src.width}
+      class={'brightness-50'}
+    />
+  </div>
+  <div>
+    <h4>{title}</h4>
+    <p>{description}</p>
+  </div>
 </a>
