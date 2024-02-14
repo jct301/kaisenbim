@@ -1,22 +1,35 @@
 export interface Content {
-  thumbnail: {
-    src: {
-      height: number
-      src: string
-      format: 'avif' | 'webp' | 'jpg' | 'jpeg' | 'tiff' | 'png' | 'gif' | 'svg'
-      width: number
+  slug: string
+  data: {
+    title: string
+    description: string
+    thumbnail: {
+      src: {
+        height: number
+        src: string
+        format:
+          | 'avif'
+          | 'webp'
+          | 'jpg'
+          | 'jpeg'
+          | 'tiff'
+          | 'png'
+          | 'gif'
+          | 'svg'
+        width: number
+      }
+      alt: string
     }
-    alt: string
+    tags: string[]
+    draft: boolean
+    publishDate: string | Date
+    updateDate?: string | Date
   }
-  path: string
-  title: string
-  description: string
 }
 
 export interface Link {
   title: string
   url: string
-  label: string
 }
 
 export interface SiteConfig {

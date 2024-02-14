@@ -1,44 +1,22 @@
 ---
 import { getContent } from '@/services/content'
 import SectionContainer from '@/components/section-container.astro'
-import Item from '@/components/item.astro'
+import ServicePreview from '@/components/service-preview.astro'
 const services = await getContent({ type: 'service' })
 import FolderStarIcon from '@/components/icons/folder-star-icon.astro'
-import Bento from '../bento.astro'
+import View from '@/components/view-plus.astro'
+import Grid from '@/components/grid.astro'
 ---
 
 <SectionContainer class='my-32' id='services'>
-  <div class='flex flex-col gap-y-6'>
+  <div class='flex flex-col gap-y-6 justify-center'>
     <div class='flex gap-x-2 items-center'>
       <FolderStarIcon />
       <h3 class='text-3xl font-semibold'>Services</h3>
     </div>
-    <Bento>
-      {
-        services?.map(
-          ({
-            data: {
-              description,
-              thumbnail: { src, alt },
-              title,
-            },
-            slug,
-          }) => (
-            <Item
-              content={{
-                title,
-                description,
-                thumbnail: {
-                  src,
-                  alt,
-                },
-                path: slug,
-              }}
-              class=''
-            />
-          ),
-        )
-      }
-    </Bento>
+    <Grid>
+      {services.map((service) => <ServicePreview content={service} />)}
+    </Grid>
+    <View link='/services' />
   </div>
 </SectionContainer>

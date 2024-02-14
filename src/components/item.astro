@@ -1,39 +1,26 @@
 ---
 import { Image } from 'astro:assets'
 import { type Content } from '@/types'
-
-interface Props {
-  content: Content
-  class?: string
-}
+type Props = Content
 
 const {
-  content: {
-    thumbnail: { src, alt },
-    path,
-    title,
-    description,
-  },
-  class: className,
+  data: { description, thumbnail, title, tags },
+  slug,
 } = Astro.props
 ---
 
 <a
-  href={path}
-  class={`flex flex-col items-center justify-center border-2 border-slate-400/10 ${className} `}>
+  href={slug}
+  class='flex flex-col rounded-sm gap-y-4 shadow-lg border-black/30 dark:border-black/20 shadow-black/30 dark:shadow-black/20'>
   <Image
-    class={'brightness-50 h-full w-full object-cover '}
-    src={src}
-    alt={alt}
-    height={src.height}
-    width={src.width}
+    alt={thumbnail.alt}
+    width={thumbnail.src.width}
+    height={thumbnail.src.height}
+    class='w-full h-auto rounded-t-sm'
+    src={thumbnail.src}
   />
-  <div>
-    <h1 class='font-semibold'>
-      {title}
-    </h1>
-    <p class=''>
-      {description}
-    </p>
+  <div class='px-4 py-3 flex flex-col gap-y-4'>
+    <h3 class='font-bold'>{title}</h3>
+    <p class='text-sm'>{description}</p>
   </div>
 </a>

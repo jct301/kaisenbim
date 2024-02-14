@@ -1,24 +1,27 @@
 ---
-import { Image } from 'astro:assets'
 import { type Content } from '@/types'
-
 type Props = Content
 
-const { thumbnail, path, title, description } = Astro.props
+const {
+  slug,
+  data: { thumbnail, title },
+} = Astro.props
+
+import { Image } from 'astro:assets'
 ---
 
-<a href={path} class='bg-gray-900' data-astro-prefetch>
-  <div>
-    <Image
-      src={thumbnail.src}
-      alt={thumbnail.alt}
-      height={thumbnail.src.height}
-      width={thumbnail.src.width}
-      class={'brightness-50'}
-    />
-  </div>
-  <div>
-    <h4>{title}</h4>
-    <p>{description}</p>
+<a
+  href={slug}
+  class='border border-black/10 relative inline-block text-center hover:shadow-lg hover:shadow-black/30 dark:hover:shadow-white/20 transition duration-100'>
+  <Image
+    alt={thumbnail.alt}
+    width={thumbnail.src.width}
+    height={thumbnail.src.height}
+    class='w-full brightness-50 hover:brightness-[0.9] transition-all duration-200'
+    src={thumbnail.src}
+  />
+  <div
+    class='absolute top-1/2 left-1/2 flex justify-center items-center flex-col -translate-x-1/2 -traslate-y-1/2'>
+    <h3 class='font-semibold text-white'>{title}</h3>
   </div>
 </a>

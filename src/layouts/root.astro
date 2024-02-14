@@ -1,12 +1,12 @@
 ---
-import { Up } from '@/components/up'
 import { SITE_CONFIG } from '@/constants'
 import type { SiteMeta } from '@/types'
-import { ViewTransitions } from 'astro:transitions'
 import Footer from '../components/footer.astro'
+
 import Head from '../components/head.astro'
 import Header from '../components/header.astro'
 import '@fontsource/montserrat'
+import { ViewTransitions } from 'astro:transitions'
 
 interface Props {
   meta: SiteMeta
@@ -29,6 +29,7 @@ const {
     <ViewTransitions />
   </head>
   <body class='relative dark:text-gray-200 text-gray-800 overflow-x-hidden'>
+    <div id='header'></div>
     <div
       class='absolute top-0 bottom-0 z-[-2] min-h-screen w-full bg-gray-50 dark:bg-gray-950
       bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(217,216,255,0.5),rgba(255,255,255,0.9))]
@@ -36,7 +37,26 @@ const {
     </div>
     <Header />
     <slot />
-    <Up client:load />
+    <button
+      aria-label='Back to Top'
+      class='bg-gray-800 dark:bg-gray-200 z-90 fixed bottom-8 end-4 flex h-10 w-10 translate-y-28 items-center justify-center rounded-full text-3xl opacity-0 transition-all duration-300 data-[show=true]:translate-y-0 data-[show=true]:opacity-100 sm:end-8 sm:h-12 sm:w-12 hover:text-blue-800 hover:dark:text-blue-600 dark:text-gray-800 text-gray-200'
+      data-show='false'
+      id='to-top-btn'
+      ><svg
+        aria-hidden='true'
+        class='h-6 w-6'
+        fill='none'
+        focusable='false'
+        stroke='currentColor'
+        stroke-width='2'
+        viewBox='0 0 24 24'
+        xmlns='http://www.w3.org/2000/svg'>
+        <path
+          d='M4.5 15.75l7.5-7.5 7.5 7.5'
+          stroke-linecap='round'
+          stroke-linejoin='round'></path>
+      </svg>
+    </button>
     <Footer />
     <style is:global>
       :root {
@@ -108,5 +128,26 @@ const {
         }
       }
     </style>
+    <script>
+      const scrollBtn = document.getElementById('to-top-btn')
+      const header = document.getElementById('header')
+      function callback(entries: IntersectionObserverEntry[]) {
+        entries.forEach((entry) => {
+          if (scrollBtn) {
+            scrollBtn.dataset.show = (!entry.isIntersecting).toString()
+          }
+        })
+      }
+
+      if (scrollBtn) {
+        scrollBtn.addEventListener('click', () => {
+          document.documentElement.scrollTo({ behavior: 'smooth', top: 0 })
+        })
+      }
+      const observer = new IntersectionObserver(callback)
+      if (header) {
+        observer.observe(header)
+      }
+    </script>
   </body>
 </html>

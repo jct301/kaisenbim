@@ -1,4 +1,5 @@
 ---
+console.log('Contribuyendo al futuro de la ingeniería.'.length)
 import SocialLink from '@/components/link.astro'
 import MailIcon from '@/components/icons/mail-icon.astro'
 import { Image } from 'astro:assets'
@@ -16,18 +17,83 @@ import SectionContainer from './section-container.astro'
         <p class='text-lg'>Contribuyendo al futuro de la ingeniería.</p>
       </div>
       <div class='flex gap-x-2'>
-        <SocialLink link=''>
+        <SocialLink link='mailto:kaisenbim@gmail.comrim'>
           <MailIcon className='' />
           <span>Contactanos</span>
         </SocialLink>
       </div>
     </div>
     <Image
+      width={800}
+      height={600}
       src={'/hero.webp'}
-      alt={'Background imagen hero'}
-      width={960}
-      height={430}
-      class='rounded-sm shadow-lg brightness-50 w-md h-auto'
+      id={'poster'}
+      class={'transition-all duration-100 hover:shadow-[0_0_50px_rgba(0,0,0,1)]'}
+      alt={'Poster hero page index'}
     />
   </div>
 </SectionContainer>
+
+<script>
+  const poster = document.getElementById('poster')
+  const height = poster?.clientHeight
+  const width = poster?.clientWidth
+
+  poster?.addEventListener('mousemove', (event) => {
+    const { offsetX, offsetY } = event
+
+    if (width && height) {
+      const yRotation = ((offsetX - width / 2) / width) * 20
+      const xRotation = ((offsetY - height / 2) / height) * 20
+
+      const string = `
+        perspective(500px)
+        scale(1.1)
+        rotateX(${xRotation}deg)
+        rotateY(${yRotation}deg)
+      `
+
+      poster.style.transform = string
+    }
+  })
+
+  poster?.addEventListener('mouseout', () => {
+    const string = `
+        perspective(500px)
+        scale(1)
+        rotateX(0deg)
+        rotateY(0deg)
+      `
+
+    poster.style.transform = string
+  })
+
+  poster?.addEventListener('touchmove', (event) => {
+    const clientX = event.touches.item(0)?.clientX
+    const clientY = event.touches.item(0)?.clientY
+    if (clientX && clientY && width && height) {
+      const yRotation = ((clientX - width / 2) / width) * 20
+      const xRotation = ((clientY - height / 2) / height) * 20
+
+      const string = `
+        perspective(500px)
+        scale(1.1)
+        rotateX(${xRotation}deg)
+        rotateY(${yRotation}deg)
+      `
+
+      poster.style.transform = string
+    }
+  })
+
+  poster?.addEventListener('touchend', () => {
+    const string = `
+        perspective(500px)
+        scale(1)
+        rotateX(0deg)
+        rotateY(0deg)
+      `
+
+    poster.style.transform = string
+  })
+</script>

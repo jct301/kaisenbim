@@ -1,7 +1,6 @@
 ---
 import { LINKS } from '@/constants'
 import ThemeToggle from '@/components/theme-toggle.astro'
-import LogoIcon from '@/components/icons/logo-icon.astro'
 ---
 
 <header
@@ -10,14 +9,13 @@ import LogoIcon from '@/components/icons/logo-icon.astro'
     class='flex px-3 text-sm font-semibold rounded-full justify-center items-center'>
     <a
       href='/'
-      class='relative block px-2 py-2 transition hover:text-blue-800 dark:hover:text-blue-600'
+      class='relative block px-2 py-2 transition hover:text-blue-800 dark:hover:text-blue-600 active:text-blue-800 active:dark:text-blue-600'
       >Inicio</a
     >
     {
-      LINKS.map(({ label, url, title }) => (
+      LINKS.map(({ url, title }) => (
         <a
-          class='relative block px-2 py-2 transition hover:text-blue-800 dark:hover:text-blue-600'
-          aria-label={label}
+          class='relative block px-2 py-2 transition hover:text-blue-800 dark:hover:text-blue-600 active:text-blue-800 active:dark:text-blue-600'
           href={url}>
           {title}
         </a>
@@ -26,6 +24,20 @@ import LogoIcon from '@/components/icons/logo-icon.astro'
     <ThemeToggle />
   </nav>
 </header>
+
+<style>
+  nav {
+    animation: nav-shadown 1s linear both;
+    animation-timeline: scroll();
+    animation-range: 0 100px;
+  }
+
+  @keyframes nav-shadown {
+    to {
+      @apply shadow-lg ring-1 backdrop-blur bg-gray-300/60 dark:bg-gray-800/60 ring-white/10;
+    }
+  }
+</style>
 
 <script>
   document.addEventListener('astro:page-load', () => {
@@ -37,9 +49,9 @@ import LogoIcon from '@/components/icons/logo-icon.astro'
         if (entry.isIntersecting) {
           navItems.forEach((item) => {
             if (item.getAttribute('aria-label') == entry.target.id) {
-              item.classList.add('text-blue-600')
+              item.classList.add('text-blue-700')
             } else {
-              item.classList.remove('text-blue-600')
+              item.classList.remove('text-blue-700')
             }
           })
         }
@@ -68,17 +80,3 @@ import LogoIcon from '@/components/icons/logo-icon.astro'
     }
   })
 </script>
-
-<style>
-  nav {
-    animation: nav-shadown 1s linear both;
-    animation-timeline: scroll();
-    animation-range: 0 100px;
-  }
-
-  @keyframes nav-shadown {
-    to {
-      @apply shadow-lg ring-1 backdrop-blur bg-gray-300/60 dark:bg-gray-800/60 ring-white/10;
-    }
-  }
-</style>
