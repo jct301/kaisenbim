@@ -21,7 +21,6 @@ export interface Content {
       alt: string
     }
     tags: string[]
-    draft: boolean
     publishDate: string | Date
     updateDate?: string | Date
   }

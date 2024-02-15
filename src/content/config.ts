@@ -5,8 +5,8 @@ const project = defineCollection({
   type: "content",
   schema: ({ image }) =>
     z.object({
-      title: z.string().max(60),
-      description: z.string().min(50).max(160),
+      title: z.string(),
+      description: z.string(),
       publishDate: z
         .string()
         .or(z.date())
@@ -20,7 +20,6 @@ const project = defineCollection({
         alt: z.string(),
       }),
       ogImage: z.string().optional(),
-      draft: z.boolean().default(false),
       tags: z.array(z.string()).default([]).transform(removeDupsAndLowerCase),
     }),
 });
@@ -29,8 +28,8 @@ const service = defineCollection({
   type: "content",
   schema: ({ image }) =>
     z.object({
-      title: z.string().max(60),
-      description: z.string().min(50).max(160),
+      title: z.string(),
+      description: z.string(),
       publishDate: z
         .string()
         .or(z.date())
@@ -43,7 +42,6 @@ const service = defineCollection({
         src: image(),
         alt: z.string(),
       }),
-      draft: z.boolean().default(false),
       tags: z.array(z.string()).default([]).transform(removeDupsAndLowerCase),
       ogImage: z.string().optional(),
     }),
@@ -53,8 +51,8 @@ const post = defineCollection({
   type: "content",
   schema: ({ image }) =>
     z.object({
-      title: z.string().max(60),
-      description: z.string().min(50).max(160),
+      title: z.string(),
+      description: z.string(),
       publishDate: z
         .string()
         .or(z.date())
@@ -67,7 +65,6 @@ const post = defineCollection({
         src: image(),
         alt: z.string(),
       }),
-      draft: z.boolean().default(false),
       tags: z.array(z.string()).default([]).transform(removeDupsAndLowerCase),
       ogImage: z.string().optional(),
     }),

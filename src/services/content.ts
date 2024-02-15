@@ -19,9 +19,7 @@ interface ContentTypeI {
 }
 
 export async function getContent({ type }: ContentTypeI) {
-  return await getCollection(type, ({ data }) => {
-    return import.meta.env.PROD ? data.draft !== true : true
-  })
+  return await getCollection(type)
 }
 
 export function sortMDByDatePosts({ content }: Contents) {

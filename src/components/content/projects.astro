@@ -1,11 +1,11 @@
 ---
 import { getContent } from '@/services/content'
 import SectionContainer from '@/components/section-container.astro'
-import ProjectPreview from '@/components/project-preview.astro'
 import Masonry from '@/components/masonry.astro'
 const projects = await getContent({ type: 'project' })
 import BriefcaseIcon from '@/components/icons/briefcase-icon.astro'
 import ViewPlus from '../view-plus.astro'
+import Card from '../card.astro'
 
 const MAX_PROJECTS = 10
 const projectsByDate = projects?.slice(0, MAX_PROJECTS)
@@ -18,8 +18,8 @@ const projectsByDate = projects?.slice(0, MAX_PROJECTS)
       <h3 class='text-3xl'>Proyectos</h3>
     </div>
     <Masonry>
-      {projectsByDate.map((project) => <ProjectPreview content={project}  />)}
-    </Masonry>
+      {projectsByDate.map(({slug, data}) => <Card data={data} slug={slug}>)}
+          </Masonry>
     <ViewPlus link='/projects' />
   </div>
 </SectionContainer>
