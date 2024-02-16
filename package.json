@@ -25,7 +25,6 @@
   },
   "module": "index.ts",
   "name": "kaisen-bim-web",
-  "packageManager": "pnpm@8.6.1",
   "scripts": {
     "build": "astro build",
     "check": "astro check",
