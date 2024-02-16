@@ -1,3 +1,13 @@
+export type HeroImage = string
+
+export interface SocialMedia {
+  mail: string
+  facebook: string
+  linkedin: string
+  instagram: string
+  whatsapp: string
+}
+
 export interface Content {
   slug: string
   data: {
@@ -21,14 +31,14 @@ export interface Content {
       alt: string
     }
     tags: string[]
-    publishDate: string | Date
-    updateDate?: string | Date
+    publishDate: Date
   }
 }
 
 export interface Link {
   title: string
   url: string
+  label: string
 }
 
 export interface SiteConfig {

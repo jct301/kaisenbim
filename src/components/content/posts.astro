@@ -1,0 +1,35 @@
+---
+import SectionContainer from '@/components/section-container.astro'
+import NoteIcon from '@/components/icons/note-icon.astro'
+import Li from '@/components/li.astro'
+import List from '../list.astro'
+import ViewPlus from '../view-plus.astro'
+import { getContent, sortMDByDatePosts } from '@/services/content'
+const posts = await getContent({ type: 'post' })
+
+interface Props {
+  maxPosts?: number
+}
+
+const { maxPosts } = Astro.props
+
+const postsSortByDate =
+  maxPosts !== undefined && maxPosts <= posts.length
+    ? sortMDByDatePosts({ content: posts }).slice(0, maxPosts)
+    : sortMDByDatePosts({ content: posts })
+---
+
+<SectionContainer id='posts' class='my-32'>
+  <div class='flex flex-col gap-y-6'>
+    <div class='flex gap-x-2 items-center font-semibold'>
+      <NoteIcon class='' />
+      <h3 class='text-3xl text-blue-800 dark:text-blue-600 font-semibold'>
+        Publicaciones
+      </h3>
+    </div>
+    <List>
+      {postsSortByDate.map(({ data, slug }) => <Li data={data} slug={slug} />)}
+    </List>
+    <ViewPlus title={'Anteriores publicaciones'} link='/posts' />
+  </div>
+</SectionContainer>

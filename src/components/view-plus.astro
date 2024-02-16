@@ -1,17 +1,17 @@
 ---
 import PlusIcon from '@/components/icons/plus-icon.astro'
+import Link from './link.astro'
 interface Props {
   link: string
+  title?: string
 }
 
-const { link } = Astro.props
+const { link, title } = Astro.props
 ---
 
-<div class='flex justify-center items-center'>
-  <a
-    class='text-center inline-flex items-center rounded-md border border-transparent bg-indigo-600 px-3 py-1.5 text-sm font-medium leading-4 text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2'
-    rel='noopener noreferrer'
-    href={link}
-    >Saber más<PlusIcon />
-  </a>
+<div class='flex flex-col justify-center items-center'>
+  <Link link={link}>
+    <PlusIcon />
+    <span>{title}</span>
+  </Link>
 </div>

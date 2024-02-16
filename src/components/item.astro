@@ -1,26 +1,32 @@
 ---
 import { Image } from 'astro:assets'
 import { type Content } from '@/types'
+import TagsList from './tags-list.astro'
 type Props = Content
 
 const {
-  data: { description, thumbnail, title },
+  data: { thumbnail, title, description, tags },
   slug,
 } = Astro.props
 ---
 
 <a
   href={slug}
-  class='flex flex-col rounded-sm gap-y-4 shadow-lg border-black/30 dark:border-black/20 shadow-black/30 dark:shadow-black/20'>
-  <Image
-    alt={thumbnail.alt}
-    width={thumbnail.src.width}
-    height={thumbnail.src.height}
-    class='w-full h-auto rounded-t-sm'
-    src={thumbnail.src}
-  />
-  <div class='px-4 py-3 flex flex-col gap-y-4'>
+  class='flex flex-col rounded-sm gap-y-4 bg-gray-200/80 dark:bg-gray-800/80 border-gray-300 dark:border-gray-600 border shadow-black/30 dark:shadow-black/20 group hover:translate-y-1 hover:shadow-lg hover:shadow-black/30 dark:hover:shadow-white/20 transition duration-200 group'>
+  <header class='w-full h-auto rounded-t-sm'>
+    <Image
+      alt={thumbnail.alt}
+      width={thumbnail.src.width}
+      height={thumbnail.src.height}
+      src={thumbnail.src}
+      class={'object-cover brightness-[0.9] border border-b-gray-300/50 dark:border-d-gray-600/50 group-hover:brightness-100 trnasition duration-200'}
+    />
+  </header>
+  <footer class='px-4 py-3 flex flex-col gap-y-2'>
     <h3 class='font-bold'>{title}</h3>
     <p class='text-sm'>{description}</p>
-  </div>
+    <div class='flex justify-end items-center'>
+      <TagsList tags={tags} />
+    </div>
+  </footer>
 </a>

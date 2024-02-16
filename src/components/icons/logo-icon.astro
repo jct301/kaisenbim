@@ -1,8 +1,16 @@
+---
+interface Props {
+  class?: string
+}
+
+const { class: className } = Astro.props
+---
+
 <svg
   xmlns='http://www.w3.org/2000/svg'
   xmlns:xlink='http://www.w3.org/1999/xlink'
   width='50'
-  {...Astro.props}
+  class={className}
   zoomAndPan='magnify'
   viewBox='0 0 375 374.999991'
   height='50'

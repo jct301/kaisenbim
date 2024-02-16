@@ -1,12 +1,15 @@
 ---
+import Posts from '@/components/content/posts.astro'
 import Projects from '@/components/content/projects.astro'
 import Services from '@/components/content/services.astro'
 import Hero from '@/components/hero.astro'
+import { HERO_IMAGE, SOCIAL_MEDIA } from '@/constants'
 import Layout from '@/layouts/root.astro'
 ---
 
 <Layout meta={{ title: 'Kaisen BIM' }}>
-  <Hero />
+  <Hero heroImage={HERO_IMAGE} socialMedia={SOCIAL_MEDIA} />
   <Services />
   <Projects />
+  <Posts />
 </Layout>

@@ -1,37 +1,44 @@
 ---
-console.log('Contribuyendo al futuro de la ingeniería.'.length)
 import SocialLink from '@/components/link.astro'
 import MailIcon from '@/components/icons/mail-icon.astro'
 import { Image } from 'astro:assets'
 import SectionContainer from './section-container.astro'
+import type { SocialMedia } from '@/types'
+
+interface Props {
+  heroImage: string
+  socialMedia: SocialMedia
+}
+
+const { heroImage, socialMedia } = Astro.props
 ---
 
-<SectionContainer>
-  <div
+<SectionContainer id='home'>
+  <article
     class='w-full flex flex-col lg:flex-row gap-12 justify-center items-center mt-6'>
-    <div class='flex flex-col gap-y-8 w-full'>
+    <header class='flex flex-col gap-y-8 w-full'>
       <div class='w-full flex flex-col gap-y-2'>
-        <h1 class='text-6xl font-bold text-blue-800 dark:text-blue-600'>
+        <h1 class='text-5xl font-bold text-blue-800 dark:text-blue-600'>
           KaisenBIM
         </h1>
-        <p class='text-lg'>Contribuyendo al futuro de la ingeniería.</p>
+        <h2 class='text-lg'>Contribuyendo al futuro de la ingeniería.</h2>
       </div>
-      <div class='flex gap-x-2'>
-        <SocialLink link='mailto:kaisenbim@gmail.comrim'>
+      <footer class='flex gap-x-2'>
+        <SocialLink link={socialMedia.mail}>
           <MailIcon className='' />
           <span>Contactanos</span>
         </SocialLink>
-      </div>
-    </div>
+      </footer>
+    </header>
     <Image
-      width={800}
-      height={600}
-      src={'/hero.webp'}
+      width={600}
+      height={800}
+      src={heroImage}
       id={'poster'}
-      class={'transition-all duration-100 hover:shadow-[0_0_50px_rgba(0,0,0,1)]'}
+      class={'transition-all object-cover duration-100 h-auto w-72 sm:w-full max-w-2xl  hover:shadow-[0_0_50px_rgba(0,0,0,1)]'}
       alt={'Poster hero page index'}
     />
-  </div>
+  </article>
 </SectionContainer>
 
 <script>

@@ -1,0 +1,18 @@
+---
+import { type Content } from '@/types'
+interface Props {
+  tags: Content['data']['tags']
+}
+
+const { tags } = Astro.props
+---
+
+<ul class='flex gap-x-1 mt-4 justify-center items-center'>
+  {
+    tags.map((tag) => (
+      <li class='px-2 py-1 bg-gray-900 dark:bg-gray-400 dark:text-gray-900 text-xs rounded-md text-gray-400'>
+        #{tag}
+      </li>
+    ))
+  }
+</ul>

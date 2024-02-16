@@ -1,25 +1,27 @@
 ---
-import { getContent } from '@/services/content'
-import SectionContainer from '@/components/section-container.astro'
-import Masonry from '@/components/masonry.astro'
-const projects = await getContent({ type: 'project' })
+import Card from '@/components/card.astro'
 import BriefcaseIcon from '@/components/icons/briefcase-icon.astro'
+import Masonry from '@/components/masonry.astro'
+import SectionContainer from '@/components/section-container.astro'
 import ViewPlus from '../view-plus.astro'
-import Card from '../card.astro'
+import { getContent } from '@/services/content'
 
+const projects = await getContent({ type: 'project' })
 const MAX_PROJECTS = 10
-const projectsByDate = projects?.slice(0, MAX_PROJECTS)
+const projectsLimit = projects?.slice(0, MAX_PROJECTS)
 ---
 
-<SectionContainer id='projects'>
+<SectionContainer id='projects' class='my-32'>
   <div class='flex flex-col gap-y-6'>
-    <div class='flex gap-x-2 items-center font-semibold'>
+    <div class='flex gap-x-2 font-semibold'>
       <BriefcaseIcon />
-      <h3 class='text-3xl'>Proyectos</h3>
+      <h3 class='text-3xl text-blue-800 dark:text-blue-600 font-semibold'>
+        Proyectos
+      </h3>
     </div>
     <Masonry>
-      {projectsByDate.map(({slug, data}) => <Card data={data} slug={slug}>)}
-          </Masonry>
-    <ViewPlus link='/projects' />
+      {projectsLimit.map(({ data, slug }) => <Card data={data} slug={slug} />)}
+    </Masonry>
+    <ViewPlus title={'Ver más proyectos'} link='/projects' />
   </div>
 </SectionContainer>
