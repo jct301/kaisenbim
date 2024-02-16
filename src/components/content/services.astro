@@ -1,15 +1,24 @@
 ---
-import SectionContainer from '@/components/section-container.astro'
-import FolderStarIcon from '@/components/icons/folder-star-icon.astro'
-import View from '@/components/view-plus.astro'
-import Grid from '@/components/grid.astro'
-import Item from '@/components/item.astro'
-import { getContent } from '@/services/content'
+import { getContentSortAndLimit } from '../../services/content'
+import Grid from '../grid.astro'
+import FolderStarIcon from '../icons/folder-star-icon.astro'
+import Item from '../item.astro'
+import Link from '../link.astro'
+import SectionContainer from '../section-container.astro'
 
-const services = await getContent({ type: 'service' })
+interface Props {
+  limit?: number
+}
+
+const { limit } = Astro.props
+
+const services = await getContentSortAndLimit({
+  typeContent: { type: 'service' },
+  limit,
+})
 ---
 
-<SectionContainer class='my-32' id='services'>
+<SectionContainer class='my-20' id='services'>
   <div class='flex flex-col gap-y-6 justify-center'>
     <div class='flex gap-x-2 items-center'>
       <FolderStarIcon />
@@ -20,6 +29,10 @@ const services = await getContent({ type: 'service' })
     <Grid>
       {services.map(({ data, slug }) => <Item data={data} slug={slug} />)}
     </Grid>
-    <View link='/services' title='Saber más' />
+    <div class='flex justify-center items-center'>
+      <Link link={'/services'}>
+        <span>{'Saber más'}</span>
+      </Link>
+    </div>
   </div>
 </SectionContainer>

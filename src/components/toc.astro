@@ -1,8 +1,8 @@
 ---
 import type { MarkdownHeading } from 'astro'
 
-import { generateToc } from '@/utils/generate-toc'
-import TOCHeading from '@/components/toc-heading.astro'
+import { generateToc } from '../utils/generate-toc'
+import TOCHeading from './toc-heading.astro'
 
 interface Props {
   headings: Array<MarkdownHeading>

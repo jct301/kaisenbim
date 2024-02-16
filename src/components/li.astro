@@ -6,25 +6,24 @@ import TagsList from './tags-list.astro'
 type Props = Content
 
 const {
-  data: { publishDate, tags, title, thumbnail },
+  data: { publishDate, tags, title, thumbnail, description },
   slug,
 } = Astro.props
 ---
 
 <a
   href={slug}
-  class='flex flex-col sm:flex-row justify-center items-start rounded-sm gap-y-4 bg-gray-200/80 dark:bg-gray-800/80 border-gray-300 dark:border-gray-600 border group shadow-black/30 dark:shadow-black/20 group hover:translate-y-1 hover:shadow-lg hover:shadow-black/30 dark:hover:shadow-white/20 transition duration-200 group'>
+  class='flex flex-col justify-center items-start rounded-sm gap-y-4 bg-gray-200/80 dark:bg-gray-800/80 border-gray-300 dark:border-gray-600 border group shadow-black/30 dark:shadow-black/20 group hover:translate-y-1 hover:shadow-lg hover:shadow-black/30 dark:hover:shadow-white/20 transition duration-200 group'>
   <header class='w-full h-auto rounded-t-sm'>
     <Image
       alt={thumbnail.alt}
-      width={600}
-      height={400}
       src={thumbnail.src}
-      class={'object-contain brightness-[0.9] h-52 group-hover:brightness-100 rounded-t-sm'}
+      class={'object-contain brightness-[0.9] group-hover:brightness-100 rounded-t-sm'}
     />
   </header>
   <footer class='px-4 py-3 flex-col justify-start'>
     <h3 class='font-bold'>{title}</h3>
+    <h5 class='text-sm'>{description}</h5>
     <div class='flex justify-between items-end'>
       <TagsList tags={tags} />
       <FormattedDate

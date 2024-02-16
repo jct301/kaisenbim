@@ -1,14 +1,15 @@
 ---
-import { SITE_CONFIG } from '@/constants'
+import { SITE_CONFIG } from '../constants'
 import SectionContainer from './section-container.astro'
 
 const year = new Date().getFullYear()
 ---
 
-<SectionContainer>
-  <footer class='flex flex-col'>
-    <div class=''>
+<SectionContainer class='my-10'>
+  <footer class='flex gap-4'>
+    <h5 class='text-sm font-semibold text-gray-800 dark:text-gray-300'>
       {SITE_CONFIG.author}
-    </div>
+    </h5>
+    <ul></ul>
   </footer>
 </SectionContainer>

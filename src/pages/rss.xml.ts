@@ -1,6 +1,6 @@
-import { getContent } from '@/services/content'
 import rss from '@astrojs/rss'
 import { SITE_CONFIG } from '../constants'
+import { getContent } from '../services/content'
 
 export const GET = async () => {
   const projects = await getContent({ type: 'project' })

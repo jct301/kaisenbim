@@ -1,12 +1,12 @@
-import { removeDupsAndLowerCase } from '@/utils/remove-dups-and-lowercase'
 import { defineCollection, z } from 'astro:content'
+import { removeDupsAndLowerCase } from '../utils/remove-dups-and-lowercase'
 
 const project = defineCollection({
   type: 'content',
   schema: ({ image }) =>
     z.object({
-      title: z.string().max(60),
-      description: z.string().min(50).max(160),
+      title: z.string(),
+      description: z.string(),
       publishDate: z
         .string()
         .or(z.date())
@@ -24,8 +24,8 @@ const service = defineCollection({
   type: 'content',
   schema: ({ image }) =>
     z.object({
-      title: z.string().max(60),
-      description: z.string().min(50).max(160),
+      title: z.string(),
+      description: z.string(),
       publishDate: z
         .string()
         .or(z.date())
@@ -43,9 +43,8 @@ const post = defineCollection({
   type: 'content',
   schema: ({ image }) =>
     z.object({
-      title: z.string().max(60),
-      description: z.string().min(50).max(160),
-
+      title: z.string(),
+      description: z.string(),
       publishDate: z
         .string()
         .or(z.date())

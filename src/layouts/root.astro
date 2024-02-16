@@ -1,12 +1,12 @@
 ---
-import { SITE_CONFIG } from '@/constants'
-import type { SiteMeta } from '@/types'
+import { SITE_CONFIG } from '../constants'
+import type { SiteMeta } from '../types'
 import Footer from '../components/footer.astro'
 
 import Head from '../components/head.astro'
 import Header from '../components/header.astro'
 import { ViewTransitions } from 'astro:transitions'
-import ThemeToggle from '@/components/theme-toggle.astro'
+import ThemeToggle from '../components/theme-toggle.astro'
 
 interface Props {
   meta: SiteMeta
@@ -35,7 +35,7 @@ const {
     <slot />
     <button
       aria-label='Back to Top'
-      class='bg-gray-800 dark:bg-gray-200 z-90 fixed bottom-8 end-4 flex h-10 w-10 translate-y-28 items-center justify-center rounded-full text-3xl opacity-0 transition-all duration-300 data-[show=true]:translate-y-0 data-[show=true]:opacity-100 sm:end-8 sm:h-12 sm:w-12 hover:text-blue-800 hover:dark:text-blue-600 dark:text-gray-800 text-gray-200'
+      class='hover:scale-105 bg-gray-500 dark:bg-gray-700 z-90 fixed bottom-8 end-4 flex h-10 w-10 translate-y-28 items-center justify-center rounded-full text-3xl opacity-0 transition-all duration-300 data-[show=true]:translate-y-0 data-[show=true]:opacity-100 sm:end-8 sm:h-12 sm:w-12 hover:dark:bg-gray-950 hover:bg-gray-700 dark:text-white text-gray-100'
       data-show='false'
       id='to-top-btn'
       ><svg
@@ -82,7 +82,7 @@ const {
         overscroll-behavior: none;
       }
 
-      @media (prefers-reduced-motion: reduce) {
+      ..media (prefers-reduced-motion: reduce) {
         html {
           scroll-behavior: auto;
         }
@@ -94,7 +94,7 @@ const {
         animation-range: 0 500px;
       }
 
-      @keyframes blur {
+      ..keyframes blur {
         to {
           backdrop-filter: blur(20px);
           border-width: 1px;
@@ -108,8 +108,8 @@ const {
         }
       }
 
-      @media (prefers-color-scheme: dark) {
-        @keyframes blur {
+      ..media (prefers-color-scheme: dark) {
+        ..keyframes blur {
           from {
             border: 0px;
           }

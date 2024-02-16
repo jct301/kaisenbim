@@ -1,17 +1,24 @@
 ---
-import Card from '@/components/card.astro'
-import BriefcaseIcon from '@/components/icons/briefcase-icon.astro'
-import Masonry from '@/components/masonry.astro'
-import SectionContainer from '@/components/section-container.astro'
-import ViewPlus from '../view-plus.astro'
-import { getContent } from '@/services/content'
+import { getContentSortAndLimit } from '../../services/content'
+import Card from '../card.astro'
+import BriefcaseIcon from '../icons/briefcase-icon.astro'
+import Link from '../link.astro'
+import Masonry from '../masonry.astro'
+import SectionContainer from '../section-container.astro'
 
-const projects = await getContent({ type: 'project' })
-const MAX_PROJECTS = 10
-const projectsLimit = projects?.slice(0, MAX_PROJECTS)
+interface Props {
+  limit?: number
+}
+
+const { limit } = Astro.props
+
+const projects = await getContentSortAndLimit({
+  typeContent: { type: 'project' },
+  limit,
+})
 ---
 
-<SectionContainer id='projects' class='my-32'>
+<SectionContainer id='projects' class='my-20'>
   <div class='flex flex-col gap-y-6'>
     <div class='flex gap-x-2 font-semibold'>
       <BriefcaseIcon />
@@ -20,8 +27,12 @@ const projectsLimit = projects?.slice(0, MAX_PROJECTS)
       </h3>
     </div>
     <Masonry>
-      {projectsLimit.map(({ data, slug }) => <Card data={data} slug={slug} />)}
+      {projects.map(({ data, slug }) => <Card data={data} slug={slug} />)}
     </Masonry>
-    <ViewPlus title={'Ver más proyectos'} link='/projects' />
+    <div class='flex justify-center items-center'>
+      <Link link={'/projects'}>
+        <span>{'Ver más proyectos'}</span>
+      </Link>
+    </div>
   </div>
 </SectionContainer>

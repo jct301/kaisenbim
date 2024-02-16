@@ -1,25 +1,25 @@
 ---
-import SectionContainer from '@/components/section-container.astro'
-import NoteIcon from '@/components/icons/note-icon.astro'
-import Li from '@/components/li.astro'
+import NoteIcon from '../icons/note-icon.astro'
+import Li from '../li.astro'
+import Link from '../link.astro'
 import List from '../list.astro'
-import ViewPlus from '../view-plus.astro'
-import { getContent, sortMDByDatePosts } from '@/services/content'
-const posts = await getContent({ type: 'post' })
+import SectionContainer from '../section-container.astro'
+
+import { getContentSortAndLimit } from '../../services/content'
 
 interface Props {
-  maxPosts?: number
+  limit?: number
 }
 
-const { maxPosts } = Astro.props
+const { limit } = Astro.props
 
-const postsSortByDate =
-  maxPosts !== undefined && maxPosts <= posts.length
-    ? sortMDByDatePosts({ content: posts }).slice(0, maxPosts)
-    : sortMDByDatePosts({ content: posts })
+const posts = await getContentSortAndLimit({
+  typeContent: { type: 'post' },
+  limit,
+})
 ---
 
-<SectionContainer id='posts' class='my-32'>
+<SectionContainer id='posts' class='my-20'>
   <div class='flex flex-col gap-y-6'>
     <div class='flex gap-x-2 items-center font-semibold'>
       <NoteIcon class='' />
@@ -28,8 +28,12 @@ const postsSortByDate =
       </h3>
     </div>
     <List>
-      {postsSortByDate.map(({ data, slug }) => <Li data={data} slug={slug} />)}
+      {posts.map(({ data, slug }) => <Li data={data} slug={slug} />)}
     </List>
-    <ViewPlus title={'Anteriores publicaciones'} link='/posts' />
+    <div class='flex justify-center items-center'>
+      <Link link={'/posts'}>
+        <span>{'Anteriores publicaciones'}</span>
+      </Link>
+    </div>
   </div>
 </SectionContainer>

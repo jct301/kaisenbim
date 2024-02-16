@@ -1,6 +1,6 @@
 ---
 import { Image } from 'astro:assets'
-import { type Content } from '@/types'
+import { type Content } from '../types'
 import TagsList from './tags-list.astro'
 type Props = Content
 
@@ -16,10 +16,8 @@ const {
   <header class='w-full h-auto rounded-t-sm'>
     <Image
       alt={thumbnail.alt}
-      width={thumbnail.src.width}
-      height={thumbnail.src.height}
       src={thumbnail.src}
-      class={'object-cover brightness-[0.9] border border-b-gray-300/50 dark:border-d-gray-600/50 group-hover:brightness-100 trnasition duration-200'}
+      class={'object-cover brightness-[0.9] border border-b-gray-300/50 dark:border-d-gray-600/50 group-hover:brightness-100 transition duration-200'}
     />
   </header>
   <footer class='px-4 py-3 flex flex-col gap-y-2'>

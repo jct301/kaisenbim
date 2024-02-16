@@ -48,3 +48,20 @@ export function getUniqueTagsWithCount({
     ),
   ].sort((a, b) => b[1] - a[1])
 }
+
+export async function getContentSortAndLimit({
+  typeContent,
+  limit,
+}: {
+  typeContent: ContentTypeI
+  limit?: number
+}) {
+  const content = await getContent({ type: typeContent.type })
+  const contentSortByDate = sortMDByDatePosts({ content })
+  const contentLimit =
+    limit !== undefined && limit <= contentSortByDate.length
+      ? contentSortByDate.slice(0, limit)
+      : contentSortByDate
+
+  return contentLimit
+}
