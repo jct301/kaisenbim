@@ -1,11 +1,12 @@
 ---
 import { LINKS } from '../constants'
+import ThemeToggle from './theme-toggle.astro'
 ---
 
 <header
   class='sticky top-0 z-10 flex items-center justify-center w-full mx-auto py-4 text-sm'>
   <nav
-    class='flex gap-x-1 xs:gap-x-2 sm:gap-x-3 md:gap-x-6 px-1 md:px-6 text-sm font-semibold rounded-full justify-center items-center'>
+    class='flex gap-x-2 xs:gap-x-3 sm:gap-x-4 md:gap-x-6 px-3 sm:px-4 md:px-6 text-sm font-semibold rounded-full justify-center items-center'>
     {
       LINKS.map(({ url, title, label }) => (
         <a
@@ -16,6 +17,7 @@ import { LINKS } from '../constants'
         </a>
       ))
     }
+    <ThemeToggle />
   </nav>
 </header>
 
