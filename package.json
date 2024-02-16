@@ -3,7 +3,6 @@
     "@astrojs/rss": "4.0.5",
     "@astrojs/sitemap": "3.0.5",
     "@astrojs/tailwind": "5.1.0",
-    "@fontsource/montserrat": "5.0.16",
     "@resvg/resvg-js": "2.6.0",
     "astro": "4.3.7",
     "rehype-external-links": "3.0.0",
