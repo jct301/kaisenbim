@@ -1,12 +1,9 @@
 ---
-import Link from "../components/link.astro";
-import MailIcon from "../components/icons/mail-icon.astro";
 import { Image } from "astro:assets";
 import ContactsRedes from "./contacts-redes.astro";
 import SectionContainer from "./section-container.astro";
 import type { SocialMedia } from "../types";
 import { CopyToClipboard } from "./copy-to-clipboard";
-import { SOCIAL_MEDIA } from "../constants";
 
 interface Props {
   heroImage: string;
@@ -30,7 +27,7 @@ const { heroImage, socialMedia, presentation, title } = Astro.props;
         <h2 class="text-lg">{presentation}</h2>
       </div>
       <footer class="flex gap-y-5 flex-col max-w-80">
-        <CopyToClipboard client:load text={SOCIAL_MEDIA.mail} />
+        <CopyToClipboard client:load text={socialMedia.mail} />
         <ContactsRedes redes={socialMedia} />
       </footer>
     </header>

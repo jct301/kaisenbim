@@ -3,8 +3,8 @@ import type { About, HeroImage, Link, SiteConfig, SocialMedia } from './types'
 /**
  * Nodemailer constants
  */
-export const SMTP_HOST = import.meta.env.SMT_HOST;
-export const SMTP_MAIL = import.meta.env.SMT_MAIL
+export const SMTP_HOST = import.meta.env.SMT_HOST
+export const SMTP_MAIL = import.meta.env.SMT_MAIL ?? 'kaisen@gmail.com'
 export const SMTP_PORT = import.meta.env.SMT_POST
 export const SMTP_PASSWORD = import.meta.env.SMT_PASSWORD
 
