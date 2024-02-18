@@ -1,0 +1,35 @@
+---
+import { type SocialMedia } from "../types";
+import FacebookIcon from "./icons/facebook-icon.astro";
+import LinkedinIcon from "./icons/linkedin-icon.astro";
+import GmailIcon from "./icons/gmail-icon.astro";
+import WhatsappIcon from "./icons/whatsapp-icon.astro";
+import SocialMediaLink from "./social-media-link.astro";
+
+interface Props {
+  redes: SocialMedia;
+}
+
+const {
+  redes: { facebook, linkedin, whatsapp, mail },
+} = Astro.props;
+---
+
+<aside class="flex gap-x-3 justify-start items-center">
+  <SocialMediaLink link={facebook}>
+    <FacebookIcon />
+    <span>Facebook</span>
+  </SocialMediaLink>
+  <SocialMediaLink link={linkedin}>
+    <LinkedinIcon />
+    <span>LinkedIn</span>
+  </SocialMediaLink>
+  <SocialMediaLink link={whatsapp}>
+    <WhatsappIcon />
+    <span>Whatsapp</span>
+  </SocialMediaLink>
+  <SocialMediaLink link={mail}>
+    <GmailIcon />
+    <span>Gmail</span>
+  </SocialMediaLink>
+</aside>

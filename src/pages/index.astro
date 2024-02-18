@@ -1,15 +1,29 @@
 ---
-import Posts from '../components/content/posts.astro'
-import Projects from '../components/content/projects.astro'
-import Services from '../components/content/services.astro'
-import Hero from '../components/hero.astro'
-import { HERO_IMAGE, SOCIAL_MEDIA } from '../constants'
-import Layout from '../layouts/root.astro'
+import Posts from "../components/content/posts.astro";
+import Projects from "../components/content/projects.astro";
+import Services from "../components/content/services.astro";
+import SectionFormContact from "../components/section-form-contact.astro";
+import Hero from "../components/hero.astro";
+import {
+  HERO_IMAGE,
+  SOCIAL_MEDIA,
+  ABOUT,
+  PRESENTATION,
+  TITLE,
+} from "../constants";
+import Layout from "../layouts/root.astro";
+import About from "../components/about.astro";
 ---
 
-<Layout meta={{ title: 'Kaisen BIM' }}>
-  <Hero heroImage={HERO_IMAGE} socialMedia={SOCIAL_MEDIA} />
+<Layout meta={{ title: "Kaisen BIM" }}>
+  <Hero
+    heroImage={HERO_IMAGE}
+    socialMedia={SOCIAL_MEDIA}
+    presentation={PRESENTATION}
+    title={TITLE}
+  />
+  <About content={ABOUT.content} image={ABOUT.image} />
   <Services />
   <Projects />
-  <Posts />
+  <SectionFormContact />
 </Layout>

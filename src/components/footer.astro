@@ -1,15 +1,25 @@
 ---
-import { SITE_CONFIG } from '../constants'
-import SectionContainer from './section-container.astro'
+import { SITE_CONFIG } from "../constants";
+import type { SocialMedia } from "../types";
+import ContactsRedes from "./contacts-redes.astro";
+import SectionContainer from "./section-container.astro";
+import SocialMediaLink from "./social-media-link.astro";
 
-const year = new Date().getFullYear()
+interface Props {
+  redes: SocialMedia;
+}
+
+const { redes } = Astro.props;
+
+const year = new Date().getFullYear();
 ---
 
-<SectionContainer class='my-10'>
-  <footer class='flex gap-4'>
-    <h5 class='text-sm font-semibold text-gray-800 dark:text-gray-300'>
+<SectionContainer class="my-10">
+  <footer class="flex gap-4 flex-col justify-center items-center">
+    <h5 class="text-sm font-semibold text-gray-800 dark:text-gray-300">
       {SITE_CONFIG.author}
     </h5>
+    <ContactsRedes redes={redes} />
     <ul></ul>
   </footer>
 </SectionContainer>

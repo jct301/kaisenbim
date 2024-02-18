@@ -1,23 +1,23 @@
 ---
-import { SITE_CONFIG } from '../constants'
-import type { SiteMeta } from '../types'
-import Footer from '../components/footer.astro'
+import { SITE_CONFIG, SOCIAL_MEDIA } from "../constants";
+import type { SiteMeta } from "../types";
+import Footer from "../components/footer.astro";
 
-import Head from '../components/head.astro'
-import Header from '../components/header.astro'
-import { ViewTransitions } from 'astro:transitions'
+import Head from "../components/head.astro";
+import Header from "../components/header.astro";
+import { ViewTransitions } from "astro:transitions";
 
 interface Props {
-  meta: SiteMeta
+  meta: SiteMeta;
 }
 
 const {
   meta: { title, description = SITE_CONFIG.description, ogImage, articleDate },
-} = Astro.props
+} = Astro.props;
 ---
 
 <!doctype html>
-<html lang='en' class='min-h-screen'>
+<html lang="en" class="min-h-screen">
   <head>
     <Head
       title={title}
@@ -28,31 +28,11 @@ const {
     <ViewTransitions />
   </head>
   <body
-    class='dark:text-gray-100 text-gray-900 overflow-x-hidden dark:bg-gray-950 bg-gray-200'>
-    <div id='header'></div>
+    class="dark:text-gray-100 text-gray-900 overflow-x-hidden dark:bg-gray-950 bg-gray-200"
+  >
     <Header />
     <slot />
-    <button
-      aria-label='Back to Top'
-      class='hover:scale-105 bg-gray-500 dark:bg-gray-700 z-90 fixed bottom-8 end-4 flex h-10 w-10 translate-y-28 items-center justify-center rounded-full text-3xl opacity-0 transition-all duration-300 data-[show=true]:translate-y-0 data-[show=true]:opacity-100 sm:end-8 sm:h-12 sm:w-12 hover:dark:bg-gray-950 hover:bg-gray-700 dark:text-white text-gray-100'
-      data-show='false'
-      id='to-top-btn'
-      ><svg
-        aria-hidden='true'
-        class='h-6 w-6'
-        fill='none'
-        focusable='false'
-        stroke='currentColor'
-        stroke-width='2'
-        viewBox='0 0 24 24'
-        xmlns='http://www.w3.org/2000/svg'>
-        <path
-          d='M4.5 15.75l7.5-7.5 7.5 7.5'
-          stroke-linecap='round'
-          stroke-linejoin='round'></path>
-      </svg>
-    </button>
-    <Footer />
+    <Footer redes={SOCIAL_MEDIA} />
     <style is:global>
       :root {
         color-scheme: light dark;
@@ -63,13 +43,13 @@ const {
           system-ui,
           -apple-system,
           BlinkMacSystemFont,
-          'Segoe UI',
+          "Segoe UI",
           Roboto,
           Oxygen,
           Ubuntu,
           Cantarell,
-          'Open Sans',
-          'Helvetica Neue',
+          "Open Sans",
+          "Helvetica Neue",
           sans-serif;
         scroll-behavior: smooth;
       }
@@ -133,26 +113,5 @@ const {
         }
       }
     </style>
-    <script>
-      const scrollBtn = document.getElementById('to-top-btn')
-      const header = document.getElementById('header')
-      function callback(entries: IntersectionObserverEntry[]) {
-        entries.forEach((entry) => {
-          if (scrollBtn) {
-            scrollBtn.dataset.show = (!entry.isIntersecting).toString()
-          }
-        })
-      }
-
-      if (scrollBtn) {
-        scrollBtn.addEventListener('click', () => {
-          document.documentElement.scrollTo({ behavior: 'smooth', top: 0 })
-        })
-      }
-      const observer = new IntersectionObserver(callback)
-      if (header) {
-        observer.observe(header)
-      }
-    </script>
   </body>
 </html>

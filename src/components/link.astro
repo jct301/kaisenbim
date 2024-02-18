@@ -1,15 +1,16 @@
 ---
 interface Props {
-  link: string
+  link: string;
 }
 
-const { link } = Astro.props
+const { link } = Astro.props;
 ---
 
 <a
   href={link}
-  class='text-center inline-flex justify-center  items-center rounded-md border border-transparent bg-blue-700 px-4 py-2 text-sm font-medium leading-4 shadow-sm text-white hover:bg-blue-800 focus:outline-none focus:ring-2 gap-x-2 hover:scale-110 transition duration-200'
-  target='_blank'
-  rel='noopener noreferrer'>
+  class="text-center inline-flex justify-center items-center rounded-md border border-transparent bg-blue-700 px-4 py-2 text-sm font-medium leading-4 text-white hover:bg-blue-800 focus:outline-none focus:ring-2 gap-x-2 transition duration-200"
+  target={`${link.startsWith("/") ? "" : "_blank"}`}
+  rel="noopener noreferrer"
+>
   <slot />
 </a>

@@ -1,10 +1,15 @@
 export type HeroImage = string
 
+export interface About {
+  image: string
+  content: string[]
+}
+
+
 export interface SocialMedia {
   mail: string
   facebook: string
   linkedin: string
-  instagram: string
   whatsapp: string
 }
 
@@ -18,14 +23,14 @@ export interface Content {
         height: number
         src: string
         format:
-          | 'avif'
-          | 'webp'
-          | 'jpg'
-          | 'jpeg'
-          | 'tiff'
-          | 'png'
-          | 'gif'
-          | 'svg'
+        | 'avif'
+        | 'webp'
+        | 'jpg'
+        | 'jpeg'
+        | 'tiff'
+        | 'png'
+        | 'gif'
+        | 'svg'
         width: number
       }
       alt: string

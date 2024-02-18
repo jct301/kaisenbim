@@ -13,11 +13,11 @@ const project = defineCollection({
         .transform((val) => new Date(val)),
       thumbnail: z.object({
         src: image(),
-        alt: z.string(),
+        alt: z.string()
       }),
       ogImage: z.string().optional(),
-      tags: z.array(z.string()).default([]).transform(removeDupsAndLowerCase),
-    }),
+      tags: z.array(z.string()).default([]).transform(removeDupsAndLowerCase)
+    })
 })
 
 const service = defineCollection({
@@ -32,30 +32,13 @@ const service = defineCollection({
         .transform((val) => new Date(val)),
       thumbnail: z.object({
         src: image(),
-        alt: z.string(),
+        alt: z.string()
       }),
       tags: z.array(z.string()).default([]).transform(removeDupsAndLowerCase),
-      ogImage: z.string().optional(),
-    }),
+      ogImage: z.string().optional()
+    })
 })
 
-const post = defineCollection({
-  type: 'content',
-  schema: ({ image }) =>
-    z.object({
-      title: z.string(),
-      description: z.string(),
-      publishDate: z
-        .string()
-        .or(z.date())
-        .transform((val) => new Date(val)),
-      thumbnail: z.object({
-        src: image(),
-        alt: z.string(),
-      }),
-      tags: z.array(z.string()).default([]).transform(removeDupsAndLowerCase),
-      ogImage: z.string().optional(),
-    }),
-})
 
-export const collections = { project, service, post }
+
+export const collections = { project, service }

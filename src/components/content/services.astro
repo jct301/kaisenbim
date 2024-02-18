@@ -1,37 +1,37 @@
 ---
-import { getContentSortAndLimit } from '../../services/content'
-import Grid from '../grid.astro'
-import FolderStarIcon from '../icons/folder-star-icon.astro'
-import Item from '../item.astro'
-import Link from '../link.astro'
-import SectionContainer from '../section-container.astro'
+import { getContentSortAndLimit } from "../../services/content";
+import Grid from "../grid.astro";
+import FolderStarIcon from "../icons/folder-star-icon.astro";
+import Item from "../item.astro";
+import Link from "../link.astro";
+import SectionContainer from "../section-container.astro";
 
 interface Props {
-  limit?: number
+  limit?: number;
 }
 
-const { limit } = Astro.props
+const { limit } = Astro.props;
 
 const services = await getContentSortAndLimit({
-  typeContent: { type: 'service' },
+  typeContent: { type: "service" },
   limit,
-})
+});
 ---
 
-<SectionContainer class='my-20' id='services'>
-  <div class='flex flex-col gap-y-6 justify-center'>
-    <div class='flex gap-x-2 items-center'>
+<SectionContainer id="services">
+  <div class="flex flex-col gap-y-6 justify-center">
+    <div class="flex gap-x-2 items-center">
       <FolderStarIcon />
-      <h3 class='text-3xl font-semibold text-blue-800 dark:text-blue-600'>
+      <h3 class="text-3xl font-semibold text-blue-800 dark:text-blue-600">
         Services
       </h3>
     </div>
     <Grid>
       {services.map(({ data, slug }) => <Item data={data} slug={slug} />)}
     </Grid>
-    <div class='flex justify-center items-center'>
-      <Link link={'/services'}>
-        <span>{'Saber más'}</span>
+    <div class="flex justify-center items-center">
+      <Link link={"/services"}>
+        <span>{"Saber más"}</span>
       </Link>
     </div>
   </div>

@@ -2,10 +2,10 @@ import rss from '@astrojs/rss'
 import { SITE_CONFIG } from '../constants'
 import { getContent } from '../services/content'
 
-export const GET = async () => {
+export async function GET (): Promise<Response> {
   const projects = await getContent({ type: 'project' })
 
-  return rss({
+  return await rss({
     title: SITE_CONFIG.title,
     description: SITE_CONFIG.description,
     site: import.meta.env.SITE,
@@ -15,8 +15,8 @@ export const GET = async () => {
         description,
         coverImage: thumbnail,
         pubDate: publishDate,
-        link: `projects/${slug}`,
+        link: `projects/${slug}`
       })
-    ),
+    )
   })
 }

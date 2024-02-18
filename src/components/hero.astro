@@ -1,79 +1,83 @@
 ---
-import SocialLink from '../components/link.astro'
-import MailIcon from '../components/icons/mail-icon.astro'
-import { Image } from 'astro:assets'
-import SectionContainer from './section-container.astro'
-import type { SocialMedia } from '../types'
+import Link from "../components/link.astro";
+import MailIcon from "../components/icons/mail-icon.astro";
+import { Image } from "astro:assets";
+import ContactsRedes from "./contacts-redes.astro";
+import SectionContainer from "./section-container.astro";
+import type { SocialMedia } from "../types";
+import { CopyToClipboard } from "./copy-to-clipboard";
+import { SOCIAL_MEDIA } from "../constants";
 
 interface Props {
-  heroImage: string
-  socialMedia: SocialMedia
+  heroImage: string;
+  socialMedia: SocialMedia;
+  title: string;
+  presentation: string;
 }
 
-const { heroImage, socialMedia } = Astro.props
+const { heroImage, socialMedia, presentation, title } = Astro.props;
 ---
 
-<SectionContainer id='home'>
+<SectionContainer id="home">
   <article
-    class='w-full flex flex-col md:flex-row gap-y-12 justify-center items-center mt-6'>
-    <header class='flex flex-col gap-y-8 w-full'>
-      <div class='w-full flex flex-col gap-y-2'>
-        <h1 class='text-5xl font-bold text-blue-800 dark:text-blue-600'>
-          KaisenBIM
+    class="w-full flex flex-col md:flex-row gap-y-12 justify-center items-center mt-6"
+  >
+    <header class="flex flex-col gap-y-8 w-full">
+      <div class="w-full flex flex-col gap-y-2">
+        <h1 class="text-5xl font-bold text-blue-800 dark:text-blue-600">
+          {title}
         </h1>
-        <h2 class='text-lg'>Contribuyendo al futuro de la ingeniería.</h2>
+        <h2 class="text-lg">{presentation}</h2>
       </div>
-      <footer class='flex gap-x-2'>
-        <SocialLink link={socialMedia.mail}>
-          <MailIcon className='' />
-          <span>Contactanos</span>
-        </SocialLink>
+      <footer class="flex gap-y-5 flex-col max-w-80">
+        <CopyToClipboard client:load text={SOCIAL_MEDIA.mail} />
+        <ContactsRedes redes={socialMedia} />
       </footer>
     </header>
-    <div class='flex flex-col justify-center items-center'>
+    <div class="flex flex-col justify-center items-center">
       <Image
         width={1024}
         height={800}
         src={heroImage}
-        id={'poster'}
-        class={'transition-all object-cover duration-100 h-auto max-w-full   hover:shadow-[0_0_50px_rgba(0,0,0,1)]'}
-        alt={'Poster hero page index'}
+        id={"poster"}
+        class={"transition-all object-cover duration-100 h-auto max-w-full   hover:shadow-[0_0_50px_rgba(0,0,0,1)]"}
+        alt={"Poster hero page index"}
       />
     </div>
   </article>
 </SectionContainer>
 
 <script>
-  const poster = document.getElementById('poster')
-  const height = poster?.clientHeight
-  const width = poster?.clientWidth
+  const poster = document.getElementById("poster");
+  const height = poster?.clientHeight;
+  const width = poster?.clientWidth;
 
-  poster?.addEventListener('mousemove', (event) => {
-    const { offsetX, offsetY } = event
+  poster?.addEventListener("mousemove", (event) => {
+    const { offsetX, offsetY } = event;
 
     if (width && height) {
-      const yRotation = ((offsetX - width / 2) / width) * 20
-      const xRotation = ((offsetY - height / 2) / height) * 20
+      const yRotation = ((offsetX - width / 2) / width) * 20;
+      const xRotation = ((offsetY - height / 2) / height) * 20;
 
       const string = `
         perspective(500px)
         scale(1.1)
         rotateX(${xRotation}deg)
         rotateY(${yRotation}deg)
-      `
+      `;
 
-      poster.style.transform = string
+      poster.style.transform = string;
     }
-  })
+  });
 
-  poster?.addEventListener('mouseout', () => {
+  poster?.addEventListener("mouseout", () => {
     const string = `
         perspective(500px)
         scale(1)
         rotateX(0deg)
         rotateY(0deg)
-      `
+      `;
 
-    poster.style.transform = string
-  })
+    poster.style.transform = string;
+  });
 </script>
