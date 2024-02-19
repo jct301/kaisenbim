@@ -1,7 +1,7 @@
 ---
-import SectionContainer from "./section-container.astro";
-import { FormContact } from "./form-contact";
+import FormContact from "./form-contact.astro";
 import MailIcon from "./icons/mail-icon.astro";
+import SectionContainer from "./section-container.astro";
 ---
 
 <SectionContainer id="contact">
@@ -13,7 +13,7 @@ import MailIcon from "./icons/mail-icon.astro";
       </h3>
     </div>
     <div class="grid md:grid-cols-2 gap-x-6">
-      <FormContact client:visible />
+      <FormContact />
       <article>
         <p>
           Lorem ipsum dolor, sit amet consectetur adipisicing elit. Deleniti,

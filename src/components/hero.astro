@@ -1,35 +1,29 @@
 ---
 import { Image } from "astro:assets";
-import ContactsRedes from "./contacts-redes.astro";
 import SectionContainer from "./section-container.astro";
-import type { SocialMedia } from "../types";
-import { CopyToClipboard } from "./copy-to-clipboard";
 
 interface Props {
   heroImage: string;
-  socialMedia: SocialMedia;
   title: string;
   presentation: string;
 }
 
-const { heroImage, socialMedia, presentation, title } = Astro.props;
+const { heroImage, presentation, title } = Astro.props;
 ---
 
 <SectionContainer id="home">
   <article
-    class="w-full flex flex-col md:flex-row gap-y-12 justify-center items-center mt-6"
+    class="w-full flex flex-col md:flex-row gap-y-12 gap-x-6 justify-center items-center mt-6"
   >
     <header class="flex flex-col gap-y-8 w-full">
       <div class="w-full flex flex-col gap-y-2">
         <h1 class="text-5xl font-bold text-blue-800 dark:text-blue-600">
           {title}
         </h1>
-        <h2 class="text-lg">{presentation}</h2>
+        <h3 class="text-pretty">
+          {presentation}
+        </h3>
       </div>
-      <footer class="flex gap-y-5 flex-col max-w-80">
-        <CopyToClipboard client:load text={socialMedia.mail} />
-        <ContactsRedes redes={socialMedia} />
-      </footer>
     </header>
     <div class="flex flex-col justify-center items-center">
       <Image

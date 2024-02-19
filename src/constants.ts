@@ -1,19 +1,11 @@
 import type { About, HeroImage, Link, SiteConfig, SocialMedia } from './types'
 
-/**
- * Nodemailer constants
- */
-export const SMTP_HOST = import.meta.env.SMT_HOST
-export const SMTP_MAIL = import.meta.env.SMT_MAIL ?? 'kaisen@gmail.com'
-export const SMTP_PORT = import.meta.env.SMT_POST
-export const SMTP_PASSWORD = import.meta.env.SMT_PASSWORD
-
 const WHATSAPP = '59177056643'
-
-export const PRESENTATION = 'Contribuyendo al futuro de la ingeniería.'
+const MAIL = 'kaisenbim@gmail.com'
+export const PRESENTATION = 'Contribuyendo al futuro de la ingeniería. Modelando construcciones, dando resultados.'
 export const TITLE = 'KaisenBIM'
 
-export const HERO_IMAGE: HeroImage = '/hero.webp'
+export const HERO_IMAGE: HeroImage = '/hero.jpg'
 export const ABOUT: About = {
   content: [
     'Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney Colleg ',
@@ -21,11 +13,12 @@ export const ABOUT: About = {
   ],
   image: '/hero.webp'
 }
+
 export const SOCIAL_MEDIA: SocialMedia = {
-  mail: `mailto:${SMTP_MAIL}`,
+  mail: `mailto:${MAIL}`,
   whatsapp: `https://api.whatsapp.com/send?phone=${WHATSAPP}`,
   facebook: '',
-  linkedin: '',
+  linkedin: ''
 }
 export const LINKS: Link[] = [
   {
@@ -41,7 +34,7 @@ export const LINKS: Link[] = [
   {
     title: 'Contactanos',
     url: '/#contact',
-    label:'contact'
+    label: 'contact'
   }
 ]
 

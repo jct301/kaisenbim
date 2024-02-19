@@ -1,10 +1,9 @@
 ---
-import { SITE_CONFIG, SOCIAL_MEDIA } from "../constants";
-import type { SiteMeta } from "../types";
-import Footer from "../components/footer.astro";
-
-import Head from "../components/head.astro";
-import Header from "../components/header.astro";
+import Footer from "@/components/footer.astro";
+import Head from "@/components/head.astro";
+import Header from "@/components/header.astro";
+import { SITE_CONFIG, SOCIAL_MEDIA } from "@/constants";
+import type { SiteMeta } from "@/types";
 import { ViewTransitions } from "astro:transitions";
 
 interface Props {
@@ -28,7 +27,7 @@ const {
     <ViewTransitions />
   </head>
   <body
-    class="dark:text-gray-100 text-gray-900 overflow-x-hidden dark:bg-gray-950 bg-gray-200"
+    class="dark:text-gray-200 text-gray-950 overflow-x-hidden dark:bg-gray-950 bg-gray-200 relative"
   >
     <Header />
     <slot />

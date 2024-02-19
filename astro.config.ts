@@ -1,11 +1,11 @@
-import sitemap from '@astrojs/sitemap'
-import tailwind from '@astrojs/tailwind'
-import { defineConfig } from 'astro/config'
-import rehypeExternalLinks from 'rehype-external-links'
-import remarkToc from 'remark-toc'
-import react from '@astrojs/react'
+import sitemap from '@astrojs/sitemap';
+import tailwind from '@astrojs/tailwind';
+import vercel from '@astrojs/vercel/serverless';
+import { defineConfig } from 'astro/config';
+import rehypeExternalLinks from 'rehype-external-links';
+import remarkToc from 'remark-toc';
 
-import vercel from '@astrojs/vercel/serverless'
+import svelte from "@astrojs/svelte";
 
 // https://astro.build/config
 export default defineConfig({
@@ -26,7 +26,7 @@ export default defineConfig({
       wrap: true
     }
   },
-  integrations: [tailwind(), sitemap(), react()],
+  integrations: [tailwind(), sitemap(), svelte()],
   output: 'server',
   adapter: vercel()
-})
+});

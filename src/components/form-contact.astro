@@ -1,0 +1,69 @@
+---
+import { z } from "zod";
+const sendMessageSchema = z.object({
+  email: z
+    .string({
+      required_error: "Value required",
+      description: "Email",
+      invalid_type_error: "Type invalid",
+    })
+    .min(1, { message: "Value invalid null" })
+    .email({
+      message: "Not is valid email",
+    }),
+  message: z
+    .string({
+      required_error: "Value required",
+      description: "Message",
+      invalid_type_error: "Type invalid",
+    })
+    .min(1, { message: "Value invalid null" }),
+});
+export type SendMessage = z.infer<typeof sendMessageSchema>;
+---
+
+<form class="flex flex-col gap-y-4 w-full justify-center items-center">
+  <div>
+    <label
+      class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+    >
+      Your email
+    </label>
+    <input
+      type="email"
+      class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500 dark:shadow-sm-light"
+      placeholder="name@flowbite.com"
+      required
+    />
+  </div>
+
+  <div class="sm:col-span-2">
+    <label
+      class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-400"
+    >
+      Your message
+    </label>
+    <textarea
+      class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg shadow-sm border border-gray-300 focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+      placeholder="Leave a comment..."></textarea>
+  </div>
+  <button
+    type="submit"
+    class="py-3 px-5 text-sm font-medium text-center text-white rounded-lg bg-primary-700 sm:w-fit hover:bg-primary-800 focus:ring-4 focus:outline-none focus:ring-primary-300 dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
+  >
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+      stroke="currentColor"
+      fill="none"
+    >
+      <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+      <path
+        d="M4.698 4.034l16.302 7.966l-16.302 7.966a.503 .503 0 0 1 -.546 -.124a.555 .555 0 0 1 -.12 -.568l2.468 -7.274l-2.468 -7.274a.555 .555 0 0 1 .12 -.568a.503 .503 0 0 1 .546 -.124z"
+      ></path>
+      <path d="M6.5 12h14.5"></path>
+    </svg>
+  </button>
+</form>

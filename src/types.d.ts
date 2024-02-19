@@ -1,11 +1,5 @@
 export type HeroImage = string
 
-export interface About {
-  image: string
-  content: string[]
-}
-
-
 export interface SocialMedia {
   mail: string
   facebook: string
@@ -19,20 +13,7 @@ export interface Content {
     title: string
     description: string
     thumbnail: {
-      src: {
-        height: number
-        src: string
-        format:
-        | 'avif'
-        | 'webp'
-        | 'jpg'
-        | 'jpeg'
-        | 'tiff'
-        | 'png'
-        | 'gif'
-        | 'svg'
-        width: number
-      }
+      src: string
       alt: string
     }
     tags: string[]
@@ -63,4 +44,9 @@ export interface SiteMeta {
   description?: string
   ogImage?: string | undefined
   articleDate?: string | undefined
+}
+
+export interface About {
+  image: string
+  content: string[]
 }
