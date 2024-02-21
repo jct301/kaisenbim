@@ -1,6 +1,6 @@
 import sitemap from '@astrojs/sitemap';
 import tailwind from '@astrojs/tailwind';
-import vercel from '@astrojs/vercel/serverless';
+import vercel from "@astrojs/vercel/serverless";
 import { defineConfig } from 'astro/config';
 import rehypeExternalLinks from 'rehype-external-links';
 import remarkToc from 'remark-toc';
@@ -26,7 +26,6 @@ export default defineConfig({
       wrap: true
     }
   },
-  integrations: [tailwind(), sitemap(), svelte()],
-  output: 'server',
-  adapter: vercel()
+  integrations: [tailwind(), sitemap(), svelte(),vercel()],
+  output:'server' 
 });
