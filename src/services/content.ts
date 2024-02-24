@@ -1,8 +1,5 @@
 import { getCollection, type CollectionEntry } from 'astro:content'
 
-/**
- *
- */
 type Project = CollectionEntry<'project'>
 type Service = CollectionEntry<'service'>
 

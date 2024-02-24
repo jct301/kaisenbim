@@ -1,14 +1,15 @@
 ---
 import { Image } from "astro:assets";
-import SectionContainer from "./section-container.astro";
-
+import SectionContainer from "@/components/section-container.astro";
+import Title from "@/components/title.astro";
 interface Props {
-  heroImage: string;
+  image: string;
+  imageAlt: string;
   title: string;
-  presentation: string;
+  description: string;
 }
 
-const { heroImage, presentation, title } = Astro.props;
+const { imageAlt, image, description, title } = Astro.props;
 ---
 
 <SectionContainer id="home">
@@ -17,21 +18,21 @@ const { heroImage, presentation, title } = Astro.props;
   >
     <header class="flex flex-col gap-y-8 w-full">
       <div class="w-full flex flex-col gap-y-2">
-        <h1 class="text-5xl font-bold text-blue-800 dark:text-blue-600">
+        <Title>
           {title}
-        </h1>
-        <h3 class="text-pretty">
-          {presentation}
-        </h3>
+        </Title>
+        <p class="text-pretty">
+          {description}
+        </p>
       </div>
     </header>
     <div class="flex flex-col justify-center items-center">
       <Image
         width={1024}
         height={800}
-        src={heroImage}
+        src={image}
         id={"poster"}
-        class={"transition-all object-cover duration-100 h-auto max-w-full   hover:shadow-[0_0_50px_rgba(0,0,0,1)]"}
+        class={imageAlt}
         alt={"Poster hero page index"}
       />
     </div>

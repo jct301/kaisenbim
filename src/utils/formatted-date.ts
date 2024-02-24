@@ -1,4 +1,4 @@
-import { SITE_CONFIG } from '../constants'
+import { SITE_CONFIG } from '@/constants/site-config'
 
 const dateFormat = new Intl.DateTimeFormat(
   SITE_CONFIG.date.locale,

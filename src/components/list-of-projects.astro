@@ -1,10 +1,9 @@
 ---
-import { getContentSortAndLimit } from "../../services/content";
-import Card from "../card.astro";
-import BriefcaseIcon from "../icons/briefcase-icon.astro";
-import Link from "../link.astro";
-import Masonry from "../masonry.astro";
-import SectionContainer from "../section-container.astro";
+import { getContentSortAndLimit } from "../services/content";
+import Card from "./card.astro";
+import BriefcaseIcon from "./icons/briefcase.astro";
+import Masonry from "./masonry.astro";
+import SectionContainer from "./section-container.astro";
 
 interface Props {
   limit?: number;
@@ -18,7 +17,7 @@ const projects = await getContentSortAndLimit({
 });
 ---
 
-<SectionContainer id="projects">
+<SectionContainer id="project">
   <div class="flex flex-col gap-y-6">
     <div class="flex gap-x-2 font-semibold">
       <BriefcaseIcon />
@@ -29,10 +28,5 @@ const projects = await getContentSortAndLimit({
     <Masonry>
       {projects.map(({ data, slug }) => <Card data={data} slug={slug} />)}
     </Masonry>
-    <div class="flex justify-center items-center">
-      <Link link={"/projects"}>
-        <span>{"Ver más proyectos"}</span>
-      </Link>
-    </div>
   </div>
 </SectionContainer>

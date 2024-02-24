@@ -1,10 +1,9 @@
 ---
-import { getContentSortAndLimit } from "../../services/content";
-import Grid from "../grid.astro";
-import FolderStarIcon from "../icons/folder-star-icon.astro";
-import Item from "../item.astro";
-import Link from "../link.astro";
-import SectionContainer from "../section-container.astro";
+import { getContentSortAndLimit } from "../services/content";
+import Grid from "./grid.astro";
+import FolderStarIcon from "./icons/folder-star.astro";
+import Item from "./item.astro";
+import SectionContainer from "./section-container.astro";
 
 interface Props {
   limit?: number;
@@ -18,7 +17,7 @@ const services = await getContentSortAndLimit({
 });
 ---
 
-<SectionContainer id="services">
+<SectionContainer id="service">
   <div class="flex flex-col gap-y-6 justify-center">
     <div class="flex gap-x-2 items-center">
       <FolderStarIcon />
@@ -29,10 +28,5 @@ const services = await getContentSortAndLimit({
     <Grid>
       {services.map(({ data, slug }) => <Item data={data} slug={slug} />)}
     </Grid>
-    <div class="flex justify-center items-center">
-      <Link link={"/services"}>
-        <span>{"Saber más"}</span>
-      </Link>
-    </div>
   </div>
 </SectionContainer>

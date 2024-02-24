@@ -1,17 +1,25 @@
 ---
-import About from "../components/about.astro";
-import Projects from "../components/content/projects.astro";
-import Services from "../components/content/services.astro";
-import Hero from "../components/hero.astro";
-import SectionFormContact from "../components/section-form-contact.astro";
-import { ABOUT, HERO_IMAGE, PRESENTATION, TITLE } from "../constants";
-import Layout from "../layouts/root.astro";
+import About from "@/components/about.astro";
+import Hero from "@/components/hero.astro";
+import ListOfProjects from "@/components/list-of-projects.astro";
+import ListOfServices from "@/components/list-of-services.astro";
+import data from "@/constants/index.json";
+import Layout from "@/layouts/root.astro";
 ---
 
 <Layout meta={{ title: "Kaisen BIM" }}>
-  <Hero heroImage={HERO_IMAGE} presentation={PRESENTATION} title={TITLE} />
-  <About content={ABOUT.content} image={ABOUT.image} />
-  <Services />
-  <Projects />
-  <SectionFormContact />
+  <Hero
+    image={data.HERO_IMAGE_SRC}
+    description={data.HERO_DESCRIPTION}
+    title={data.HERO_TITLE}
+    imageAlt={data.HERO_IMAGE_ALT}
+  />
+  <About
+    image={data.ABOUT_IMAGE_SRC}
+    imageAlt={data.ABOUT_IMAGE_ALT}
+    title={data.ABOUT_TITLE}
+    description={data.ABOUT_DESCRIPTION}
+  />
+  <ListOfServices limit={3} />
+  <ListOfProjects limit={3} />
 </Layout>

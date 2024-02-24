@@ -1,18 +1,13 @@
 ---
-import { type Content } from '../types'
+import Tag from "@/components/tag.astro";
+import { type Content } from "@/types/content";
 interface Props {
-  tags: Content['data']['tags']
+  tags: Content["data"]["tags"];
 }
 
-const { tags } = Astro.props
+const { tags } = Astro.props;
 ---
 
-<ul class='flex gap-x-1 mt-4 justify-center items-center'>
-  {
-    tags.map((tag) => (
-      <li class='px-2 py-1 bg-gray-900 dark:bg-gray-400 dark:text-gray-900 text-xs rounded-md text-gray-400'>
-        #{tag}
-      </li>
-    ))
-  }
+<ul class="flex gap-x-1 mt-4 justify-center items-center">
+  {tags.map((tag) => <Tag>#{tag}</Tag>)}
 </ul>

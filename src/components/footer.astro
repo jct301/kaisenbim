@@ -1,21 +1,19 @@
 ---
-import { SITE_CONFIG } from "../constants";
-import type { SocialMedia } from "../types";
-import SectionContainer from "./section-container.astro";
-
-interface Props {
-  redes: SocialMedia;
-}
+import Link from "@/components/link.astro";
+import SectionContainer from "@/components/section-container.astro";
+import { LINKS } from "@/constants/links";
 
 const year = new Date().getFullYear();
 ---
 
-<SectionContainer class="my-10">
-  <footer class="flex gap-4 flex-col justify-center items-center">
-    <h5 class="text-sm font-semibold text-gray-800 dark:text-gray-300">
-      {SITE_CONFIG.author}
-    </h5>
-
-    <ul></ul>
+<SectionContainer class="mt-20" id="contact">
+  <footer class="flex justify-center items-center gap-x-5">
+    {
+      LINKS.map(({ title, url, label }) => (
+        <Link url={url} aria-label={label}>
+          {title}
+        </Link>
+      ))
+    }
   </footer>
 </SectionContainer>

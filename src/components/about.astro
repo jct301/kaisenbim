@@ -1,37 +1,36 @@
 ---
+import InfoIcon from "@/components/icons/info.astro";
+import SectionContainer from "@/components/section-container.astro";
+import Subtitle from "@/components/subtitle.astro";
 import { Image } from "astro:assets";
-import InfoIcon from "./icons/info-icon.astro";
-import SectionContainer from "./section-container.astro";
 
 interface Props {
   image: string;
-  content: string[];
+  imageAlt: string;
+  title: string;
+  description: string;
 }
 
-const { image, content } = Astro.props;
+const { image, description, title, imageAlt } = Astro.props;
 ---
 
 <SectionContainer id="about">
   <div class="flex flex-col gap-y-6">
     <div class="flex gap-x-2 items-center font-semibold">
       <InfoIcon />
-      <h3 class="text-3xl text-blue-800 dark:text-blue-600 font-semibold">
-        Sobre nosotros
-      </h3>
+      <Subtitle>{title}</Subtitle>
     </div>
     <article
       class="flex flex-col items-center justify-center gap-8 md:flex-row"
     >
-      <div class="flex flex-col gap-y-4 w-full">
-        {content.map((p) => <p>{p}</p>)}
-      </div>
+      <p class="max-w-md">{description}</p>
       <div class="flex flex-col justify-center items-center">
         <Image
           width={400}
           height={600}
           src={image}
           class="w-full"
-          alt={"Imagen de presentaión de quienes somos Kaisen BIM."}
+          alt={imageAlt}
         />
       </div>
     </article>

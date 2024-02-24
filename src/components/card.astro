@@ -1,6 +1,6 @@
 ---
+import { type Content } from "@/types/content";
 import { Image } from "astro:assets";
-import { type Content } from "../types";
 import FormattedDate from "./formatted-date.astro";
 import TagsList from "./tags-list.astro";
 type Props = Content;
@@ -22,11 +22,11 @@ const {
     class="w-full brightness-50 group-hover:brightness-75 duration-200 object-cover h-auto"
     src={thumbnail.src}
   />
-  <h3
+  <h4
     class="font-semibold text-white top-10 text-center absolute left-1/2 -translate-x-1/2 -traslate-y-1/2"
   >
     {title}
-  </h3>
+  </h4>
   <article
     class="bottom-0 backdrop-blur border-t bg-gray-600/50 dark:bg-gray-950/50 border-t-gray-400 transition-opacity group-hover:opacity-100 opacity-0 duration-200 absolute w-full left-1/2 flex flex-col px-2 py-4 -translate-x-1/2 -traslate-y-1/2"
   >

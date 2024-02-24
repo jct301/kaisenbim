@@ -1,10 +1,10 @@
 ---
-import { type SocialMedia } from "../types";
-import FacebookIcon from "./icons/facebook-icon.astro";
-import LinkedinIcon from "./icons/linkedin-icon.astro";
-import GmailIcon from "./icons/gmail-icon.astro";
-import WhatsappIcon from "./icons/whatsapp-icon.astro";
-import SocialMediaLink from "./social-media-link.astro";
+import FacebookIcon from "@/components/icons/facebook.astro";
+import GmailIcon from "@/components/icons/gmail.astro";
+import LinkedinIcon from "@/components/icons/linkedin.astro";
+import WhatsappIcon from "@/components/icons/whatsapp.astro";
+import Link from "@/components/link.astro";
+import { type SocialMedia } from "@/types/social-media";
 
 interface Props {
   redes: SocialMedia;
@@ -15,21 +15,21 @@ const {
 } = Astro.props;
 ---
 
-<aside class="flex gap-x-3 justify-start items-center">
-  <SocialMediaLink link={facebook}>
+<div class="justify-center items-center flex gap-x-4">
+  <Link url={facebook} class="flex justify-center gap-x-1 items-center">
     <FacebookIcon />
-    <span>Facebook</span>
-  </SocialMediaLink>
-  <SocialMediaLink link={linkedin}>
+    <span>@KaisenBIM</span>
+  </Link>
+  <Link url={linkedin} class="flex justify-center gap-x-1 items-center">
     <LinkedinIcon />
-    <span>LinkedIn</span>
-  </SocialMediaLink>
-  <SocialMediaLink link={whatsapp}>
+    <span>kaisenbim</span>
+  </Link>
+  <Link url={whatsapp} class="flex justify-center gap-x-1 items-center">
     <WhatsappIcon />
-    <span>Whatsapp</span>
-  </SocialMediaLink>
-  <SocialMediaLink link={mail}>
+    <span>+591 77056643</span>
+  </Link>
+  <Link url={mail} class="flex justify-center gap-x-1 items-center">
     <GmailIcon />
-    <span>Gmail</span>
-  </SocialMediaLink>
-</aside>
+    <span>kaisenbim@gmail.com</span>
+  </Link>
+</div>

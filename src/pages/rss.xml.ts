@@ -1,5 +1,5 @@
 import rss from '@astrojs/rss'
-import { SITE_CONFIG } from '../constants'
+import { SITE_CONFIG } from '../constants/constants'
 import { getContent } from '../services/content'
 
 export async function GET (): Promise<Response> {

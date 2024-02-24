@@ -1,21 +1,21 @@
 ---
-import type { TocItem } from '../utils/generate-toc'
+import type { TocItem } from "@/utils/generate-toc";
 
 interface Props {
-  heading: TocItem
+  heading: TocItem;
 }
 
 const {
   heading: { slug, text, depth, subheadings },
-} = Astro.props
+} = Astro.props;
 ---
 
-<li class={`${depth > 2 ? 'ms-2' : ''}`}>
+<li class={`${depth > 2 ? "ms-2" : ""}`}>
   <a
-    class={`block line-clamp-2 hover:text-accent ${depth <= 2 ? 'mt-3' : 'mt-2 text-[0.6875rem]'}`}
+    class={`block line-clamp-2 hover:text-accent ${depth <= 2 ? "mt-3" : "mt-2 text-[0.6875rem]"}`}
     href={`#${slug}`}
     aria-label={`Scroll to section: ${text}`}
-    ><span class='me-0.5'>#</span>{text}</a
+    ><span class="me-0.5">#</span>{text}</a
   >
   {
     !!subheadings.length && (
