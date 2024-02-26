@@ -1,11 +1,6 @@
 {
-  "HERO_TITLE":"KaisenBIM",
-  "HERO_DESCRIPTION":"Contribuyendo al futuro de la ingeniería, modelando construcciones",
-  "HERO_IMAGE_ALT":"Poster",
-  "HERO_IMAGE_SRC":"/hero.webp",
-  "ABOUT_DESCRIPTION":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut vel vestibulum lacus. Nam mollis gravida metus, sit amet vulputate purus egestas eu. Suspendisse euismod enim id nulla tempor, sit amet elementum erat finibus. Curabitur bibendum nisi id magna aliquet dignissim. Vestibulum purus nunc, ultricies vitae tortor eget, euismod lobortis massa. Aliquam at porta ipsum. In efficitur sodales condimentum. Vivamus molestie est eu diam condimentum condimentum.",
-  "ABOUT_IMAGE_SRC":"/hero.webp",
-  "ABOUT_TITLE":"Sobre nosotros",
-  "ABOUT_IMAGE_ALT":"Sobre nosotros, kaisenbim prestando servicios de buena calidad.",
-  "CONTACT_TITLE":"Contactanos"
+  "HERO_TITLE": "KaisenBIM",
+  "HERO_DESCRIPTION": "Contribuyendo al futuro de la ingeniería, modelando construcciones",
+  "HERO_IMAGE_SRC": "https://img.freepik.com/fotos-premium/vista-aerea-atardecer-chicago-skylines-south_63253-7235.jpg?w=740",
+  "HERO_IMAGE_ALT": ""
 }

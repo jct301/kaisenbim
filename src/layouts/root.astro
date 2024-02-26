@@ -2,12 +2,12 @@
 import Footer from "@/components/footer.astro";
 import Head from "@/components/head.astro";
 import Header from "@/components/header.astro";
-import Up from "@/components/up.astro";
+import ProgressBar from "@/components/progress-bar.astro";
 import { SITE_CONFIG } from "@/constants/site-config";
 import { SOCIAL_MEDIA } from "@/constants/social-media";
 import type { Meta } from "@/types/meta";
+import "@fontsource-variable/urbanist";
 import { ViewTransitions } from "astro:transitions";
-
 interface Props {
   meta: Meta;
 }
@@ -33,7 +33,7 @@ const {
   >
     <Header />
     <slot />
-    <Up />
+    <ProgressBar />
     <Footer redes={SOCIAL_MEDIA} />
     <style is:global>
       :root {
@@ -41,19 +41,10 @@ const {
       }
 
       html {
-        font-family:
-          system-ui,
-          -apple-system,
-          BlinkMacSystemFont,
-          "Segoe UI",
-          Roboto,
-          Oxygen,
-          Ubuntu,
-          Cantarell,
-          "Open Sans",
-          "Helvetica Neue",
-          sans-serif;
         scroll-behavior: smooth;
+        font-family: "Urbanist Variable", system-ui, sans-serif;
+        overflow-x: hidden;
+        overscroll-behavior: none;
       }
     </style>
   </body>

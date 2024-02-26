@@ -1,0 +1,23 @@
+<div></div>
+
+<style>
+  div {
+    position: fixed;
+    top: 0;
+    width: 0%;
+    height: 0.2em;
+    background-color: #09f;
+
+    animation: progress-grow auto linear;
+    animation-timeline: scroll(root block);
+  }
+
+  @keyframes progress-grow {
+    form {
+      width: 0;
+    }
+    to {
+      width: 100%;
+    }
+  }
+</style>

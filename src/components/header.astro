@@ -6,7 +6,7 @@ import { LINKS } from "@/constants/links";
 ---
 
 <header
-  class="sticky top-0 z-10 flex items-center justify-center w-full mx-auto py-4 text-sm"
+  class="fixed top-0 z-10 flex items-center justify-center w-full mx-auto py-4 text-sm"
 >
   <nav
     class="flex gap-x-2 xs:gap-x-3 sm:gap-x-4 md:gap-x-6 px-3 sm:px-4 md:px-6 text-sm font-semibold rounded-full justify-center items-center"
@@ -26,6 +26,48 @@ import { LINKS } from "@/constants/links";
     <ThemeToggle />
   </nav>
 </header>
+
+<script>
+  document.addEventListener("astro:page-load", () => {
+    const sections = document.querySelectorAll("section");
+    const navItems = document.querySelectorAll("header nav a");
+
+    const callback = (entries: any[]) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          navItems.forEach((item) => {
+            if (item.getAttribute("aria-label") == entry.target.id) {
+              item.classList.add("text-yellow-500");
+            } else {
+              item.classList.remove("text-yellow-500");
+            }
+          });
+        }
+      });
+    };
+
+    const observer = new IntersectionObserver(callback, {
+      root: null,
+      rootMargin: "0px",
+      threshold: 0.3,
+    });
+
+    sections.forEach((section) => {
+      observer.observe(section);
+    });
+
+    // Cleanup function
+    document.onvisibilitychange = () => {
+      if (document.visibilityState === "hidden") {
+        observer.disconnect();
+      } else {
+        sections.forEach((section) => {
+          observer.observe(section);
+        });
+      }
+    };
+  });
+</script>
 
 <style>
   nav {

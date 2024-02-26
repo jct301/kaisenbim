@@ -1,5 +1,5 @@
 ---
-import About from "@/components/about.astro";
+import Contact from "@/components/contact.astro";
 import Hero from "@/components/hero.astro";
 import ListOfProjects from "@/components/list-of-projects.astro";
 import ListOfServices from "@/components/list-of-services.astro";
@@ -14,12 +14,8 @@ import Layout from "@/layouts/root.astro";
     title={data.HERO_TITLE}
     imageAlt={data.HERO_IMAGE_ALT}
   />
-  <About
-    image={data.ABOUT_IMAGE_SRC}
-    imageAlt={data.ABOUT_IMAGE_ALT}
-    title={data.ABOUT_TITLE}
-    description={data.ABOUT_DESCRIPTION}
-  />
-  <ListOfServices limit={3} />
-  <ListOfProjects limit={3} />
+
+  <ListOfServices limit={6} next={true} />
+  <ListOfProjects limit={6} next={true} />
+  <Contact />
 </Layout>

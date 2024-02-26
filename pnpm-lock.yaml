@@ -17,9 +17,9 @@ dependencies:
   '@astrojs/vercel':
     specifier: ^7.3.1
     version: 7.3.1(astro@4.3.7)
-  '@emailjs/browser':
-    specifier: ^4.1.0
-    version: 4.1.0
+  '@fontsource-variable/urbanist':
+    specifier: ^5.0.19
+    version: 5.0.19
   astro:
     specifier: 4.3.7
     version: 4.3.7(typescript@5.3.3)
@@ -440,11 +440,6 @@ packages:
       to-fast-properties: 2.0.0
     dev: false
 
-  /@emailjs/browser@4.1.0:
-    resolution: {integrity: sha512-AWLTmFli2NIKjBXs4Fql1B5z8i3W2r+CKCaxp0DdcFzcIQxrCS2TzmqJtIiPZKh9FpZgqueQTivBx6QOxaz89Q==}
-    engines: {node: '>=14.0.0'}
-    dev: false
-
   /@emmetio/abbreviation@2.3.3:
     resolution: {integrity: sha512-mgv58UrU3rh4YgbE/TzgLQwJ3pFsHHhCLqY20aJq+9comytTXUDNGG/SMtSeMJdkpxgXSXunBGLD8Boka3JyVA==}
     dependencies:
@@ -667,6 +662,10 @@ packages:
     requiresBuild: true
     dev: false
     optional: true
+
+  /@fontsource-variable/urbanist@5.0.19:
+    resolution: {integrity: sha512-YGf4nJmhVQlJdyg4ukJt2COTDx49gpGSeG3zLQiGJIMxGtDGXN+VfiZueDUWLgUq8g6Il+cqYCBDrlChOvxY/g==}
+    dev: false
 
   /@isaacs/cliui@8.0.2:
     resolution: {integrity: sha512-O8jcjabXaleOG9DQ0+ARXWZBTfnP4WNAqzuiJK7ll44AmxGKv/J2M4TPjxjY3znBCfvBXFzucm1twdyFybFqEA==}

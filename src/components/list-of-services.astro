@@ -1,23 +1,28 @@
 ---
-import { getContentSortAndLimit } from "../services/content";
-import Grid from "./grid.astro";
-import FolderStarIcon from "./icons/folder-star.astro";
-import Item from "./item.astro";
-import SectionContainer from "./section-container.astro";
+import ButtonLink from "@/components/button-link.astro";
+import Grid from "@/components/grid.astro";
+import FolderStarIcon from "@/components/icons/folder-star.astro";
+import Item from "@/components/item.astro";
+import SectionContainer from "@/components/section-container.astro";
+import {
+  getContents,
+  getContentsLimit,
+  sortMDByDateContents,
+} from "@/services/content";
 
 interface Props {
   limit?: number;
+  next: boolean;
 }
 
-const { limit } = Astro.props;
+const { limit, next } = Astro.props;
 
-const services = await getContentSortAndLimit({
-  typeContent: { type: "service" },
-  limit,
-});
+const allServices = await getContents({ type: "project" });
+const sortServices = sortMDByDateContents({ contents: allServices });
+const services = getContentsLimit({ contents: sortServices, limit });
 ---
 
-<SectionContainer id="service">
+<SectionContainer id="services" class="mt-16">
   <div class="flex flex-col gap-y-6 justify-center">
     <div class="flex gap-x-2 items-center">
       <FolderStarIcon />
@@ -28,5 +33,12 @@ const services = await getContentSortAndLimit({
     <Grid>
       {services.map(({ data, slug }) => <Item data={data} slug={slug} />)}
     </Grid>
+    {
+      next && (
+        <div>
+          <ButtonLink url="/services">Ver más</ButtonLink>
+        </div>
+      )
+    }
   </div>
 </SectionContainer>

@@ -1,23 +1,28 @@
 ---
-import { getContentSortAndLimit } from "../services/content";
-import Card from "./card.astro";
-import BriefcaseIcon from "./icons/briefcase.astro";
-import Masonry from "./masonry.astro";
-import SectionContainer from "./section-container.astro";
+import ButtonLink from "@/components/button-link.astro";
+import Card from "@/components/card.astro";
+import BriefcaseIcon from "@/components/icons/briefcase.astro";
+import Masonry from "@/components/masonry.astro";
+import SectionContainer from "@/components/section-container.astro";
+import {
+  getContents,
+  getContentsLimit,
+  sortMDByDateContents,
+} from "@/services/content";
 
 interface Props {
   limit?: number;
+  next: boolean;
 }
 
-const { limit } = Astro.props;
+const { limit, next } = Astro.props;
 
-const projects = await getContentSortAndLimit({
-  typeContent: { type: "project" },
-  limit,
-});
+const allProjects = await getContents({ type: "project" });
+const sortProjects = sortMDByDateContents({ contents: allProjects });
+const projects = getContentsLimit({ contents: sortProjects, limit });
 ---
 
-<SectionContainer id="project">
+<SectionContainer id="projects" class="mt-16">
   <div class="flex flex-col gap-y-6">
     <div class="flex gap-x-2 font-semibold">
       <BriefcaseIcon />
@@ -28,5 +33,12 @@ const projects = await getContentSortAndLimit({
     <Masonry>
       {projects.map(({ data, slug }) => <Card data={data} slug={slug} />)}
     </Masonry>
+    {
+      next && (
+        <div>
+          <ButtonLink url="/projects">Ver más</ButtonLink>
+        </div>
+      )
+    }
   </div>
 </SectionContainer>

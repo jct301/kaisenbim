@@ -13,29 +13,28 @@ const {
 
 <a
   href={slug}
-  class="border max-w-full border-black/10 relative inline-block hover:shadow-lg hover:shadow-black/30 dark:hover:shadow-white/20 transition duration-200 group"
+  class="border max-w-full border-black/10 relative inline-block hover:-translate-y-1 transition duration-300 hover:shadow-lg hover:shadow-black/20 hover:dark:shadow-white/20"
 >
   <Image
     width={1024}
     height={500}
     alt={thumbnail.alt}
-    class="w-full brightness-50 group-hover:brightness-75 duration-200 object-cover h-auto"
+    class="w-full brightness-75 object-cover h-auto"
     src={thumbnail.src}
   />
-  <h4
-    class="font-semibold text-white top-10 text-center absolute left-1/2 -translate-x-1/2 -traslate-y-1/2"
-  >
-    {title}
-  </h4>
+
   <article
-    class="bottom-0 backdrop-blur border-t bg-gray-600/50 dark:bg-gray-950/50 border-t-gray-400 transition-opacity group-hover:opacity-100 opacity-0 duration-200 absolute w-full left-1/2 flex flex-col px-2 py-4 -translate-x-1/2 -traslate-y-1/2"
+    class="bottom-0 backdrop-blur border-t bg-gray-600/50 dark:bg-gray-950/50 border-t-gray-400 absolute w-full left-1/2 flex flex-col px-2 py-4 -translate-x-1/2 -traslate-y-1/2 gap-y-2"
   >
+    <h4 class="font-semibold text-white">
+      {title}
+    </h4>
     <p class="text-sm text-gray-200">{description}</p>
     <div class="flex justify-between items-end">
       <TagsList tags={tags} />
       <FormattedDate
         date={publishDate}
-        class="text-blue-950 dark:text-blue-400 text-xs py-2"
+        class="text-blue-200 dark:text-blue-400 text-xs py-2"
       />
     </div>
   </article>
