@@ -1,9 +1,9 @@
-import { SITE_CONFIG } from '@/constants/site-config'
-import rss from '@astrojs/rss'
-import { getContent } from '../services/content'
+import { SITE_CONFIG } from "@/constants/site-config";
+import rss from "@astrojs/rss";
+import { getContents } from "../services/content";
 
-export async function GET (): Promise<Response> {
-  const projects = await getContent({ type: 'project' })
+export async function GET(): Promise<Response> {
+  const projects = await getContents({ type: "project" });
 
   return await rss({
     title: SITE_CONFIG.title,
@@ -15,8 +15,8 @@ export async function GET (): Promise<Response> {
         description,
         coverImage: thumbnail,
         pubDate: publishDate,
-        link: `projects/${slug}`
+        link: `projects/${slug}`,
       })
-    )
-  })
+    ),
+  });
 }
