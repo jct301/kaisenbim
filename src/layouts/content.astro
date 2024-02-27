@@ -11,7 +11,7 @@ interface Props {
 const { content } = Astro.props;
 
 const {
-  data: { description, publishDate, tags, thumbnail, title, ogImage },
+  data: { description, publishDate, thumbnail, title, ogImage },
   slug,
 } = content;
 
@@ -30,7 +30,6 @@ const { headings, remarkPluginFrontmatter } = await content.render();
       height: 400,
     }}
     title={title}
-    tags={tags}
     id="heroID"
     publishDate={publishDate}
     minutesRead={remarkPluginFrontmatter.minutesRead}
@@ -38,7 +37,7 @@ const { headings, remarkPluginFrontmatter } = await content.render();
 
   {!!headings.length && <Toc headings={headings} />}
   <div
-    class="flex flex-col gap-y-2 prose-headings:mt-3 prose-headings:text-accent-2 prose-headings:dark:text-blue-500 prose-headings:text-blue-600 prose-headings:font-semibold prose-headings:text-lg prose-h1:text-3xl prose-h2:text-2xl prose-h3:text-xl prose-h4:text-lg prose-headings:before:absolute prose-headings:before:text-accent prose-th:before:content-none prose-blockquote:my-4 prose-img:my-4 prose-ul:ms-8 prose-li:dark:text-gray-400 prose-blockquote:ms-8 prose-blockquote:italic prose-img:max-w-sm prose-img:object-cover prose-img:text-center prose-img:m-auto prose-img:rounded-sm prose-p:ms-4"
+    class="flex flex-col gap-y-2 prose-headings:mt-3 prose-headings:text-accent-2 prose-headings:dark:text-blue-500 prose-headings:text-blue-600 prose-headings:font-semibold prose-headings:text-lg prose-h1:text-3xl prose-h2:text-2xl prose-h3:text-xl prose-h4:text-lg prose-headings:before:absolute prose-headings:before:text-accent prose-th:before:content-none prose-blockquote:my-4 prose-img:my-4 prose-ul:ms-8 prose-li:dark:text-gray-400 prose-blockquote:ms-8 prose-blockquote:italic prose-img:max-w-full prose-img:object-cover prose-img:text-center prose-img:m-auto prose-img:md:max-w-sm prose-img:rounded-sm prose-p:ms-4"
   >
     <slot />
   </div>
