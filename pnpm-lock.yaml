@@ -26,6 +26,9 @@ dependencies:
   '@fontsource-variable/urbanist':
     specifier: ^5.0.19
     version: 5.0.19
+  '@fontsource/iosevka':
+    specifier: ^5.0.7
+    version: 5.0.7
   astro:
     specifier: 4.2.4
     version: 4.2.4(typescript@5.3.3)
@@ -869,6 +872,10 @@ packages:
 
   /@fontsource-variable/urbanist@5.0.19:
     resolution: {integrity: sha512-YGf4nJmhVQlJdyg4ukJt2COTDx49gpGSeG3zLQiGJIMxGtDGXN+VfiZueDUWLgUq8g6Il+cqYCBDrlChOvxY/g==}
+    dev: false
+
+  /@fontsource/iosevka@5.0.7:
+    resolution: {integrity: sha512-X8s5hob/XEMPgY6JsgIwVRYsBMOxeSWlSXAWqZWeFcSF/ZyUsq/ut2fqgOlhUweBqS/ttiPBwJLXl7EPJsWqEg==}
     dev: false
 
   /@humanwhocodes/config-array@0.11.14:
