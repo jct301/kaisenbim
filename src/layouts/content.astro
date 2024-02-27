@@ -1,0 +1,46 @@
+---
+import ButtonUp from "@/components/button-up.astro";
+import HeroContent from "@/components/hero-content.astro";
+import Toc from "@/components/toc.astro";
+import type { CollectionEntry } from "astro:content";
+import Layout from "./root.astro";
+interface Props {
+  content: CollectionEntry<"project"> | CollectionEntry<"service">;
+}
+
+const { content } = Astro.props;
+
+const {
+  data: { description, publishDate, tags, thumbnail, title, ogImage },
+  slug,
+} = content;
+
+const socialImage = ogImage ?? `og-image/${slug}.png`;
+const articleDate = publishDate?.toISOString();
+
+const { headings, remarkPluginFrontmatter } = await content.render();
+---
+
+<Layout meta={{ articleDate, description, ogImage: socialImage, title }}>
+  <HeroContent
+    thumbnail={{
+      alt: thumbnail.alt,
+      src: thumbnail.src,
+      width: 300,
+      height: 400,
+    }}
+    title={title}
+    tags={tags}
+    id="heroID"
+    publishDate={publishDate}
+    minutesRead={remarkPluginFrontmatter.minutesRead}
+  />
+
+  {!!headings.length && <Toc headings={headings} />}
+  <div
+    class="flex flex-col gap-y-2 prose-headings:mt-3 prose-headings:text-accent-2 prose-headings:dark:text-blue-500 prose-headings:text-blue-600 prose-headings:font-semibold prose-headings:text-lg prose-h1:text-3xl prose-h2:text-2xl prose-h3:text-xl prose-h4:text-lg prose-headings:before:absolute prose-headings:before:text-accent prose-th:before:content-none prose-blockquote:my-4 prose-img:my-4 prose-ul:ms-8 prose-li:dark:text-gray-400 prose-blockquote:ms-8 prose-blockquote:italic prose-img:max-w-sm prose-img:object-cover prose-img:text-center prose-img:m-auto prose-img:rounded-sm prose-p:ms-4"
+  >
+    <slot />
+  </div>
+</Layout>
+<ButtonUp />

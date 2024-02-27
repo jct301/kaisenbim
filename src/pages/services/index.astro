@@ -1,8 +1,15 @@
 ---
+import Hero from "@/components/hero.astro";
 import ListOfServices from "@/components/list-of-services.astro";
 import Layout from "@/layouts/root.astro";
 ---
 
 <Layout meta={{ title: "Services" }}>
-  <ListOfServices />
+  <Hero
+    description="Diferentes servicios ofrecidos."
+    image="/hero.webp"
+    title="Nuestros servicios"
+    imageAlt="Proyectos"
+  />
+  <ListOfServices next={false} />
 </Layout>

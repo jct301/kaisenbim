@@ -1,18 +1,42 @@
 {
   "dependencies": {
-    "@astrojs/rss": "^4.0.5",
+    "@astrojs/mdx": "2.1.1",
+    "@astrojs/rss": "4.0.5",
+    "@astrojs/sitemap": "3.0.5",
     "@astrojs/svelte": "^5.0.3",
     "@astrojs/tailwind": "5.1.0",
-    "@astrojs/vercel": "^7.3.1",
+    "@astrojs/vercel": "^7.3.4",
     "@fontsource-variable/urbanist": "^5.0.19",
-    "astro": "4.3.7",
+    "astro": "4.2.4",
+    "astro-expressive-code": "^0.32.4",
+    "mdast-util-to-string": "^4.0.0",
+    "reading-time": "^1.5.0",
+    "rehype-external-links": "^3.0.0",
+    "remark-unwrap-images": "^4.0.0",
+    "satori": "0.10.11",
+    "satori-html": "^0.3.2",
+    "sharp": "^0.33.2",
     "svelte": "^4.2.12",
     "svelte-sonner": "^0.3.18"
   },
   "devDependencies": {
     "@astrojs/check": "0.5.4",
-    "tailwindcss": "3.4.1",
-    "typescript": "5.3.3"
+    "@pagefind/default-ui": "^1.0.4",
+    "@resvg/resvg-js": "^2.6.0",
+    "@tailwindcss/aspect-ratio": "^0.4.2",
+    "@tailwindcss/typography": "^0.5.10",
+    "autoprefixer": "^10.4.17",
+    "mdast-util-to-string": "^4.0.0",
+    "pagefind": "^1.0.4",
+    "postcss": "^8.4.35",
+    "postcss-html": "^1.6.0",
+    "postcss-import": "^16.0.0",
+    "reading-time": "^1.5.0",
+    "remark-unwrap-images": "^4.0.0",
+    "tailwindcss": "^3.4.1",
+    "tailwindcss-animated": "^1.0.1",
+    "ts-standard": "12.0.2",
+    "typescript": "^5.3.3"
   },
   "module": "index.ts",
   "name": "kaisen-bim-web",
@@ -24,5 +48,10 @@
     "start": "astro dev"
   },
   "type": "module",
-  "version": "0.0.1"
+  "version": "0.0.1",
+  "eslintConfig": {
+    "extends": [
+      "./node_modules/ts-standard/eslintrc.json"
+    ]
+  }
 }

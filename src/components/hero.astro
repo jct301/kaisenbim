@@ -1,6 +1,5 @@
 ---
 import { Image } from "astro:assets";
-import SectionContainer from "./section-container.astro";
 import Title from "./title.astro";
 
 interface Props {
@@ -13,7 +12,7 @@ interface Props {
 const { image, description, title, imageAlt } = Astro.props;
 ---
 
-<SectionContainer id="home" class="mt-20 flex flex-col gap-y-10">
+<section id="heroID" class="flex flex-col gap-y-10 my-10">
   <article
     class="w-full flex flex-col md:flex-row gap-y-12 gap-x-6 justify-center items-center mt-6"
   >
@@ -32,9 +31,11 @@ const { image, description, title, imageAlt } = Astro.props;
         width={1024}
         height={800}
         src={image}
-        class={"brightness-90 hover:brightness-100 transition hover:translate-y-1 duration-200 hover:scale-105"}
+        class={"brightness-90 hover:brightness-100 transition duration-300 rounded-sm"}
+        loading="eager"
+        fetchpriority="high"
         alt={imageAlt}
       />
     </div>
   </article>
-</SectionContainer>
+</section>

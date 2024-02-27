@@ -1,26 +1,27 @@
 ---
-import { type Content } from "@/types/content";
 import { Image } from "astro:assets";
+import { type Content } from "../types/content";
 import FormattedDate from "./formatted-date.astro";
-import TagsList from "./tags-list.astro";
 type Props = Content;
 
 const {
   slug,
-  data: { thumbnail, title, description, tags, publishDate },
+  data: { thumbnail, title, description, publishDate },
 } = Astro.props;
 ---
 
 <a
-  href={slug}
+  href={`/projects/${slug}`}
   class="border max-w-full border-black/10 relative inline-block hover:-translate-y-1 transition duration-300 hover:shadow-lg hover:shadow-black/20 hover:dark:shadow-white/20"
 >
   <Image
     width={1024}
     height={500}
     alt={thumbnail.alt}
-    class="w-full brightness-75 object-cover h-auto"
+    class="w-full brightness-75 object-cover h-auto rounded-sm"
     src={thumbnail.src}
+    loading="eager"
+    fetchpriority="high"
   />
 
   <article
@@ -31,7 +32,6 @@ const {
     </h4>
     <p class="text-sm text-gray-200">{description}</p>
     <div class="flex justify-between items-end">
-      <TagsList tags={tags} />
       <FormattedDate
         date={publishDate}
         class="text-blue-200 dark:text-blue-400 text-xs py-2"

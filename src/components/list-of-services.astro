@@ -3,7 +3,6 @@ import ButtonLink from "@/components/button-link.astro";
 import Grid from "@/components/grid.astro";
 import FolderStarIcon from "@/components/icons/folder-star.astro";
 import Item from "@/components/item.astro";
-import SectionContainer from "@/components/section-container.astro";
 import {
   getContents,
   getContentsLimit,
@@ -17,12 +16,12 @@ interface Props {
 
 const { limit, next } = Astro.props;
 
-const allServices = await getContents({ type: "project" });
+const allServices = await getContents({ type: "service" });
 const sortServices = sortMDByDateContents({ contents: allServices });
 const services = getContentsLimit({ contents: sortServices, limit });
 ---
 
-<SectionContainer id="services" class="mt-16">
+<section id="services" class="my-10">
   <div class="flex flex-col gap-y-6 justify-center">
     <div class="flex gap-x-2 items-center">
       <FolderStarIcon />
@@ -41,4 +40,4 @@ const services = getContentsLimit({ contents: sortServices, limit });
       )
     }
   </div>
-</SectionContainer>
+</section>

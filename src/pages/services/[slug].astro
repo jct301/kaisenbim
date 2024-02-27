@@ -1,7 +1,6 @@
 ---
 import ContentLayout from "@/layouts/content.astro";
 import { getEntry } from "astro:content";
-
 const { slug } = Astro.params;
 const page = await getEntry("project", `${slug}`);
 

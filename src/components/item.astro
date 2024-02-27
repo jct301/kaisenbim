@@ -1,17 +1,16 @@
 ---
-import TagsList from "@/components/tags-list.astro";
-import { type Content } from "@/types/content";
 import { Image } from "astro:assets";
+import { type Content } from "../types/content";
 type Props = Content;
 
 const {
-  data: { thumbnail, title, description, tags },
+  data: { thumbnail, title, description },
   slug,
 } = Astro.props;
 ---
 
 <a
-  href={slug}
+  href={`/services/${slug}`}
   class="flex flex-col rounded-sm gap-y-4 bg-gray-200/80 dark:bg-gray-800/80 border-gray-300 dark:border-gray-600 border group hover:-translate-y-1 transition duration-300 hover:shadow-lg hover:shadow-black/20 hover:dark:shadow-white/20"
 >
   <header class="rounded-t-sm">
@@ -20,14 +19,13 @@ const {
       height={300}
       alt={thumbnail.alt}
       src={thumbnail.src}
-      class={"object-cover border border-b-gray-300/50 dark:border-d-gray-600/50 brightness-75"}
+      loading="eager"
+      fetchpriority="high"
+      class={"object-cover border border-b-gray-300/50 dark:border-d-gray-600/50 brightness-75 rounded-sm"}
     />
   </header>
   <footer class="px-4 py-3 flex flex-col gap-y-2">
     <h3 class="font-bold">{title}</h3>
     <p class="text-sm">{description}</p>
-    <div class="flex justify-end items-center">
-      <TagsList tags={tags} />
-    </div>
   </footer>
 </a>

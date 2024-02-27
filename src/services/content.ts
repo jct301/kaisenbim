@@ -6,7 +6,11 @@ type Service = CollectionEntry<"service">;
 type Content = Project | Service;
 type Type = "project" | "service";
 
-export async function getContents({ type }: { type: Type }): Promise<Content[]> {
+export async function getContents({
+  type,
+}: {
+  type: Type;
+}): Promise<Content[]> {
   return await getCollection(type);
 }
 
@@ -20,27 +24,6 @@ export function sortMDByDateContents({
     const bDate = new Date(b.data.publishDate).valueOf();
     return bDate - aDate;
   });
-}
-
-export function getAllTags({ contents }: { contents: Content[] }): string[] {
-  return contents.flatMap((content) => [...content.data.tags]);
-}
-
-export function getUniqueTags({ contents }: { contents: Content[] }): string[] {
-  return [...new Set(getAllTags({ contents }))];
-}
-
-export function getUniqueTagsWithCount({
-  contents,
-}: {
-  contents: Content[];
-}): Array<[string, number]> {
-  return [
-    ...getAllTags({ contents }).reduce(
-      (acc, t) => acc.set(t, (acc.get(t) ?? 0) + 1),
-      new Map<string, number>()
-    ),
-  ].sort((a, b) => b[1] - a[1]);
 }
 
 export function getContentsLimit({

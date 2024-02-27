@@ -1,31 +1,51 @@
 ---
-import { Image } from 'astro:assets'
+import { Image } from "astro:assets";
+import FormattedDate from "./formatted-date.astro";
+import Subtitle from "./subtitle.astro";
 
 interface Props {
   thumbnail: {
-    alt: string
-    src: string
-    width: number
-    height: number
-  }
-  title: string
+    alt: string;
+    src: string;
+    width: number;
+    height: number;
+  };
+  title: string;
+  tags: string[];
+  id: string;
+  minutesRead: number;
+  publishDate: Date;
 }
+const dateTimeOptions: Intl.DateTimeFormatOptions = {
+  month: "long",
+};
 
-const { thumbnail, title } = Astro.props
+const { thumbnail, title, id, minutesRead, publishDate } = Astro.props;
 ---
 
-<section class='aspect-h-9 aspect-w-16 mb-6'>
-  <Image
-    width={thumbnail.width}
-    height={thumbnail.height}
-    src={thumbnail.src}
-    alt={thumbnail.alt}
-    class='object-cover'
-    loading='eager'
-    fetchpriority='high'
-  />
-
-  <h3 class='title mb-3 sm:mb-1'>
-    {title}
-  </h3>
+<section id={id} class="my-10">
+  <div
+    class="flex flex-col gap-y-5 mx-auto container justify-center items-center"
+  >
+    <Subtitle>
+      {title}
+    </Subtitle>
+    <Image
+      width={thumbnail.width}
+      height={thumbnail.height}
+      src={thumbnail.src}
+      alt={thumbnail.alt}
+      class="object-cover w-full max-w-sm h-auto aspect-auto rounded-sm"
+      loading="eager"
+      fetchpriority="high"
+    />
+  </div>
+  <div class="flex flex-wrap items-center gap-x-3 gap-y-2">
+    <p class="font-semibold">
+      <FormattedDate date={publishDate} dateTimeOptions={dateTimeOptions} /> /{
+        " "
+      }
+      {minutesRead}
+    </p>
+  </div>
 </section>

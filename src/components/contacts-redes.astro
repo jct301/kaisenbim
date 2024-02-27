@@ -15,7 +15,9 @@ const {
 } = Astro.props;
 ---
 
-<div class="justify-center items-center flex gap-x-4">
+<div
+  class="justify-center items-start px-2 flex flex-col md:flex-row gap-y-3 gap-x-4"
+>
   <Link url={facebook} class="flex justify-center gap-x-1 items-center">
     <FacebookIcon />
     <span>@KaisenBIM</span>

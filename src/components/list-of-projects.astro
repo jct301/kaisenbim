@@ -3,7 +3,6 @@ import ButtonLink from "@/components/button-link.astro";
 import Card from "@/components/card.astro";
 import BriefcaseIcon from "@/components/icons/briefcase.astro";
 import Masonry from "@/components/masonry.astro";
-import SectionContainer from "@/components/section-container.astro";
 import {
   getContents,
   getContentsLimit,
@@ -22,9 +21,9 @@ const sortProjects = sortMDByDateContents({ contents: allProjects });
 const projects = getContentsLimit({ contents: sortProjects, limit });
 ---
 
-<SectionContainer id="projects" class="mt-16">
+<section id="projects" class="my-10">
   <div class="flex flex-col gap-y-6">
-    <div class="flex gap-x-2 font-semibold">
+    <div class="flex gap-x-2 font-semibold items-center">
       <BriefcaseIcon />
       <h3 class="text-3xl text-blue-800 dark:text-blue-600 font-semibold">
         Proyectos
@@ -41,4 +40,4 @@ const projects = getContentsLimit({ contents: sortProjects, limit });
       )
     }
   </div>
-</SectionContainer>
+</section>
